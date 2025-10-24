@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Добави клиент</title></head>
+<body>
+<h1>Добави нов клиент</h1>
+<form th:action="@{/customers/add}" th:object="${customer}" method="post">
+    <label>Име:</label>
+    <input type="text" th:field="*{name}" required/>
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required/>
+    <label>Адрес:</label>
+    <input type="text" th:field="*{address}" required/>
+    <button type="submit">Запиши</button>
+</form>
+<a th:href="@{/customers}">Назад</a>
+</body>
+</html>

@@ -28,7 +28,8 @@ public class ProductController {
     public ModelAndView listAllProducts() {
 
         ModelAndView modelAndView = new ModelAndView("products");
-        modelAndView.addObject("products", productService.findAll());
+        modelAndView.addObject("products", productService.getAllProducts());
+        modelAndView.addObject("activePage", "products");
         return modelAndView;
 
     }
@@ -45,10 +46,11 @@ public class ProductController {
     public ModelAndView addProduct(@Valid @ModelAttribute("product") ProductDTO productDTO,
                                    BindingResult bindingResult) {
 
+
         ModelAndView modelAndView = new ModelAndView("add-product");
 
         if (bindingResult.hasErrors()) {
-            return modelAndView;
+            return new ModelAndView("add-product");
         }
 
         Product product = Product.builder()
@@ -56,17 +58,18 @@ public class ProductController {
                 .price(productDTO.getPrice())
                 .quantity(productDTO.getQuantity())
                 .category(productDTO.getCategory())
+                .description(productDTO.getDescription())
                 .build();
 
-        productService.save(product);
-        modelAndView.setViewName("redirect:/products");
-        return modelAndView;
+        productService.saveProduct(product);
+
+        return new ModelAndView("redirect:/products");
     }
 
     @GetMapping("/delete/{id}")
     public ModelAndView deleteProduct(@PathVariable("id") UUID id) {
 
-        productService.delete(id);
+        productService.deleteProduct(id);
         return new ModelAndView("redirect:/products");
     }
 }

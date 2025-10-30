@@ -1,9 +1,6 @@
 package com.tradingapp.tradingapp.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -15,6 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "products")
 public class Product {
 
     @Id
@@ -31,4 +29,6 @@ public class Product {
     private int quantity;
 
     private String category;
+
+    private String description;
 }

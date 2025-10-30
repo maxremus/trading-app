@@ -30,6 +30,10 @@
             <div th:if="${error}" class="alert alert-danger mt-3" th:text="${error}"></div>
         </form>
 
+        <div th:if="${param.logout}" class="alert alert-success text-center">
+            Излязохте успешно от системата.
+        </div>
+
         <div class="text-center mt-3">
             <p>Нямаш акаунт?
                 <a th:href="@{/register}" class="text-decoration-none">Регистрирай се</a>

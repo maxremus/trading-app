@@ -5,6 +5,8 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -21,14 +23,14 @@ public class Order {
     private UUID id;
 
     @ManyToOne(optional = false)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToOne(optional = false)
-    private Product product;
-
-    private int quantity;
-
-    private BigDecimal totalPrice;
-
     private LocalDateTime createdOn;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> items = new ArrayList<>();
+
+    @Column(nullable = false)
+    private BigDecimal totalPrice;
 }

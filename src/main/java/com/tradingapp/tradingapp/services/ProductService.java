@@ -7,8 +7,8 @@ import java.util.UUID;
 
 public interface ProductService {
 
-    List<Product> findAll();
+    List<Product> getAllProducts();
     Product findById(UUID id);
-    Product save(Product product);
-    void delete(UUID id);
+    Product saveProduct(Product product);
+    void deleteProduct(UUID id);
 }

@@ -7,8 +7,8 @@ import java.util.UUID;
 
 public interface CustomerService {
 
-    List<Customer> findAll();
-    Customer findById(UUID id);
-    Customer save(Customer customer);
-    void delete(UUID id);
+    List<Customer> getAllCustomers();
+    Customer getCustomerById(UUID id);
+    Customer saveCustomer(Customer customer);
+    void deleteCustomer(UUID id);
 }

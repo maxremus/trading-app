@@ -2,6 +2,7 @@ package com.tradingapp.tradingapp.web;
 
 import com.tradingapp.tradingapp.entities.Customer;
 import com.tradingapp.tradingapp.services.CustomerService;
+import com.tradingapp.tradingapp.web.dto.CustomerDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,8 @@ public class CustomerController {
     public ModelAndView listCustomers() {
 
         ModelAndView modelAndView = new ModelAndView("customers");
-        modelAndView.addObject("customers", customerService.findAll());
+        modelAndView.addObject("customers", customerService.getAllCustomers());
+        modelAndView.addObject("activePage", "customers");
         return modelAndView;
     }
 
@@ -34,7 +36,8 @@ public class CustomerController {
     public ModelAndView showAddForm() {
 
         ModelAndView modelAndView= new ModelAndView("add-customer");
-        modelAndView.addObject("customer", new Customer());
+        modelAndView.addObject("customer", new CustomerDTO());
+
         return modelAndView;
     }
 
@@ -45,14 +48,14 @@ public class CustomerController {
         if (result.hasErrors()) {
             return new ModelAndView("add-customer");
         }
-        customerService.save(customer);
+        customerService.saveCustomer(customer);
         return new ModelAndView("redirect:/customers");
     }
 
     @GetMapping("/delete/{id}")
     public ModelAndView deleteCustomer(@PathVariable UUID id) {
 
-        customerService.delete(id);
+        customerService.deleteCustomer(id);
         return new ModelAndView("redirect:/customers");
     }
 }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирай поръчка | TradingApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow-sm p-4 mx-auto" style="max-width: 800px;">
+        <h3 class="text-center mb-4">✏️ Редактирай поръчка</h3>
+
+        <form th:action="@{'/orders/edit/' + ${order.id}}" th:object="${order}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+            <div class="mb-3">
+                <label class="form-label">Клиент</label>
+                <select class="form-select" th:field="*{customer}" required>
+                    <option value="" disabled>Избери клиент</option>
+                    <option th:each="c : ${customers}"
+                            th:value="${c.id}"
+                            th:text="${c.name}"
+                            th:selected="${c.id == order.customer.id}">
+                    </option>
+                </select>
+            </div>
+
+            <h5 class="mb-3">📦 Продукти</h5>
+
+            <div id="product-list">
+                <div th:each="item, iterStat : ${order.items}" class="product-row row g-3 mb-2">
+                    <div class="col-md-6">
+                        <select class="form-select" th:name="'items[' + ${iterStat.index} + '].productId'" required>
+                            <option value="" disabled>Избери продукт</option>
+                            <option th:each="p : ${products}"
+                                    th:value="${p.id}"
+                                    th:text="${p.name} + ' (' + ${p.quantity} + ' бр.)'"
+                                    th:selected="${p.id == item.product.id}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="number" class="form-control"
+                               th:name="'items[' + ${iterStat.index} + '].quantity'"
+                               th:value="${item.quantity}" min="1" required>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-danger w-100" onclick="removeRow(this)">❌</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <button type="button" class="btn btn-outline-primary w-100" onclick="addProductRow()">➕ Добави още продукт</button>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-success">💾 Запиши промените</button>
+            </div>
+        </form>
+
+        <div th:if="${error}" class="alert alert-danger mt-3" th:text="${error}"></div>
+
+        <div class="text-center mt-3">
+            <a th:href="@{/orders}" class="text-decoration-none">← Назад към поръчките</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function addProductRow() {
+        const list = document.querySelector('#product-list');
+        const index = list.querySelectorAll('.product-row').length;
+        const template = `
+        <div class="product-row row g-3 mb-2">
+            <div class="col-md-6">
+                <select class="form-select" name="items[${index}].productId" required>
+                    <option value="" disabled selected>Избери продукт</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="number" class="form-control" name="items[${index}].quantity" min="1" placeholder="Количество" required>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-danger w-100" onclick="removeRow(this)">❌</button>
+            </div>
+        </div>`;
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = template;
+        const firstSelect = document.querySelector('.product-row select');
+        wrapper.querySelector('select').innerHTML = firstSelect.innerHTML;
+        list.appendChild(wrapper.firstElementChild);
+    }
+
+    function removeRow(btn) {
+        btn.closest('.product-row').remove();
+    }
+</script>
+
+</body>
+</html>

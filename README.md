@@ -31,9 +31,9 @@ trading-app/
 ## How to Run
 ```
 cd web-app
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
 ```
 cd invoice-service
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```

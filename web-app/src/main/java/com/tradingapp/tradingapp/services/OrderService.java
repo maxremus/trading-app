@@ -18,4 +18,6 @@ public interface OrderService {
     void deleteOrder(UUID id);
 
     Order updateOrder(UUID id, OrderDTO orderDTO);
+
+    OrderDTO getOrderAsDto(UUID id);
 }

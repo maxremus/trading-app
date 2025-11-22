@@ -200,4 +200,27 @@ public class OrderServiceImpl implements OrderService {
 
         return orderRepository.save(order);
     }
+
+    @Override
+    public OrderDTO getOrderAsDto(UUID id) {
+
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        OrderDTO dto = new OrderDTO();
+        dto.setId(order.getId());
+        dto.setCustomerId(order.getCustomer().getId());
+
+        List<OrderItemDTO> items = new ArrayList<>();
+        order.getItems().forEach(i -> {
+            OrderItemDTO itemDto = new OrderItemDTO();
+            itemDto.setProductId(i.getProduct().getId());
+            itemDto.setQuantity(i.getQuantity());
+            items.add(itemDto);
+        });
+
+        dto.setItems(items);
+
+        return dto;
+    }
 }

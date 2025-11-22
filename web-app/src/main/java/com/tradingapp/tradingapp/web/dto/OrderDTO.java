@@ -10,8 +10,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Setter
 public class OrderDTO {
 
+    private UUID id;
     private UUID customerId;
     private String eik;
     private List<OrderItemDTO> items;

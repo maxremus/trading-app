@@ -4,7 +4,6 @@ package com.tradingapp.tradingapp.web;
 import com.tradingapp.tradingapp.error.ProductNotFoundException;
 import com.tradingapp.tradingapp.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.server.ResponseStatusException;
@@ -14,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class GlobalControllerAdvice {
 
     @Autowired
-    private CustomerService customerService;
+    private CustomerService customerServiceImpl;
 
     @ExceptionHandler(IllegalStateException.class)
     public ModelAndView handleIllegalStateException(IllegalStateException ex) {
@@ -64,5 +63,13 @@ public class GlobalControllerAdvice {
         modelAndView.addObject("statusCode", 500);
 
         return modelAndView;
+    }
+
+    public CustomerService getCustomerServiceImpl() {
+        return customerServiceImpl;
+    }
+
+    public void setCustomerServiceImpl(CustomerService customerServiceImpl) {
+        this.customerServiceImpl = customerServiceImpl;
     }
 }

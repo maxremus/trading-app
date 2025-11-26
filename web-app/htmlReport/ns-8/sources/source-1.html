@@ -1,0 +1,248 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > AccountController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.tradingapp.tradingapp.web</a>
+</div>
+
+<h1>Coverage Summary for Class: AccountController (com.tradingapp.tradingapp.web)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AccountController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (1/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    6%
+  </span>
+  <span class="absValue">
+    (3/50)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.tradingapp.tradingapp.web;
+&nbsp;
+&nbsp;import com.tradingapp.tradingapp.entities.User;
+&nbsp;import com.tradingapp.tradingapp.repositories.UserRepository;
+&nbsp;import com.tradingapp.tradingapp.web.dto.ChangePasswordDto;
+&nbsp;import com.tradingapp.tradingapp.web.dto.UpdateProfileDto;
+&nbsp;import jakarta.validation.Valid;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.security.core.Authentication;
+&nbsp;import org.springframework.security.crypto.password.PasswordEncoder;
+&nbsp;import org.springframework.stereotype.Controller;
+&nbsp;import org.springframework.validation.BindingResult;
+&nbsp;import org.springframework.web.bind.annotation.GetMapping;
+&nbsp;import org.springframework.web.bind.annotation.ModelAttribute;
+&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+&nbsp;import org.springframework.web.servlet.ModelAndView;
+&nbsp;import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+&nbsp;
+&nbsp;@Controller
+&nbsp;@RequestMapping(&quot;/account&quot;)
+&nbsp;public class AccountController {
+&nbsp;
+&nbsp;    private final UserRepository userRepository;
+&nbsp;    private final PasswordEncoder passwordEncoder;
+&nbsp;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public AccountController(UserRepository userRepository, PasswordEncoder passwordEncoder) {</b>
+<b class="fc">&nbsp;        this.userRepository = userRepository;</b>
+<b class="fc">&nbsp;        this.passwordEncoder = passwordEncoder;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;&quot;)
+&nbsp;    public ModelAndView showAccount(Authentication auth) {
+&nbsp;
+<b class="nc">&nbsp;        User user = userRepository.findByUsername(auth.getName())</b>
+<b class="nc">&nbsp;                .orElseThrow(() -&gt; new RuntimeException(&quot;User not found&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        UpdateProfileDto profileDto = new UpdateProfileDto();</b>
+<b class="nc">&nbsp;        profileDto.setUsername(user.getUsername());</b>
+<b class="nc">&nbsp;        profileDto.setEmail(user.getEmail());</b>
+&nbsp;
+<b class="nc">&nbsp;        ModelAndView mav = new ModelAndView(&quot;account&quot;);</b>
+<b class="nc">&nbsp;        mav.addObject(&quot;profile&quot;, profileDto);</b>
+<b class="nc">&nbsp;        mav.addObject(&quot;passwordDto&quot;, new ChangePasswordDto());</b>
+<b class="nc">&nbsp;        mav.addObject(&quot;user&quot;, user);</b>
+&nbsp;
+<b class="nc">&nbsp;        return mav;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/update&quot;)
+&nbsp;    public ModelAndView updateProfile(
+&nbsp;            @Valid @ModelAttribute(&quot;profile&quot;) UpdateProfileDto dto,
+&nbsp;            BindingResult result,
+&nbsp;            Authentication auth,
+&nbsp;            RedirectAttributes redirectAttributes) {
+&nbsp;
+<b class="nc">&nbsp;        User user = userRepository.findByUsername(auth.getName())</b>
+<b class="nc">&nbsp;                .orElseThrow(() -&gt; new RuntimeException(&quot;User not found&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        ModelAndView mav = new ModelAndView(&quot;account&quot;);</b>
+<b class="nc">&nbsp;        mav.addObject(&quot;passwordDto&quot;, new ChangePasswordDto());</b>
+<b class="nc">&nbsp;        mav.addObject(&quot;user&quot;, user);</b>
+&nbsp;
+&nbsp;        // Полета невалидни
+<b class="nc">&nbsp;        if (result.hasErrors()) {</b>
+<b class="nc">&nbsp;            mav.addObject(&quot;error&quot;, &quot;Моля, попълнете всички полета коректно.&quot;);</b>
+<b class="nc">&nbsp;            return mav;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Email вече зает
+<b class="nc">&nbsp;        if (userRepository.existsByEmailAndIdNot(dto.getEmail(), user.getId())) {</b>
+<b class="nc">&nbsp;            mav.addObject(&quot;error&quot;, &quot;Този имейл вече се използва!&quot;);</b>
+<b class="nc">&nbsp;            return mav;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Обновяване
+<b class="nc">&nbsp;        user.setUsername(dto.getUsername());</b>
+<b class="nc">&nbsp;        user.setEmail(dto.getEmail());</b>
+<b class="nc">&nbsp;        userRepository.save(user);</b>
+&nbsp;
+<b class="nc">&nbsp;        redirectAttributes.addFlashAttribute(&quot;success&quot;, &quot;Профилът е обновен успешно!&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/account&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/change-password&quot;)
+&nbsp;    public ModelAndView changePassword(
+&nbsp;            @Valid @ModelAttribute(&quot;passwordDto&quot;) ChangePasswordDto dto,
+&nbsp;            BindingResult result,
+&nbsp;            Authentication auth,
+&nbsp;            RedirectAttributes redirectAttributes) {
+&nbsp;
+<b class="nc">&nbsp;        User user = userRepository.findByUsername(auth.getName())</b>
+<b class="nc">&nbsp;                .orElseThrow(() -&gt; new RuntimeException(&quot;User not found&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        ModelAndView mav = new ModelAndView(&quot;account&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        UpdateProfileDto profile = new UpdateProfileDto();</b>
+<b class="nc">&nbsp;        profile.setEmail(user.getEmail());</b>
+<b class="nc">&nbsp;        profile.setUsername(user.getUsername());</b>
+&nbsp;
+<b class="nc">&nbsp;        mav.addObject(&quot;profile&quot;, profile);</b>
+<b class="nc">&nbsp;        mav.addObject(&quot;user&quot;, user);</b>
+&nbsp;
+&nbsp;        // Проверка за грешки
+<b class="nc">&nbsp;        if (result.hasErrors()) {</b>
+<b class="nc">&nbsp;            mav.addObject(&quot;passError&quot;, &quot;Попълнете всички полета коректно.&quot;);</b>
+<b class="nc">&nbsp;            return mav;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Проверка на текуща парола
+<b class="nc">&nbsp;        if (!passwordEncoder.matches(dto.getOldPassword(), user.getPassword())) {</b>
+<b class="nc">&nbsp;            mav.addObject(&quot;passError&quot;, &quot;Грешна текуща парола.&quot;);</b>
+<b class="nc">&nbsp;            return mav;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Съвпадение на новите пароли
+<b class="nc">&nbsp;        if (!dto.getNewPassword().equals(dto.getConfirmPassword())) {</b>
+<b class="nc">&nbsp;            mav.addObject(&quot;passError&quot;, &quot;Новите пароли не съвпадат.&quot;);</b>
+<b class="nc">&nbsp;            return mav;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Запис на нова парола
+<b class="nc">&nbsp;        user.setPassword(passwordEncoder.encode(dto.getNewPassword()));</b>
+<b class="nc">&nbsp;        userRepository.save(user);</b>
+&nbsp;
+<b class="nc">&nbsp;        redirectAttributes.addFlashAttribute(&quot;success&quot;, &quot;Паролата е сменена успешно!&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/account&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-26 18:19</div>
+</div>
+</body>
+</html>

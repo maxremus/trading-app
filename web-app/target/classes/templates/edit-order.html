@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирай поръчка | TradingApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script>
+        function updateTotals() {
+            let total = 0;
+
+            document.querySelectorAll('.product-row').forEach(row => {
+                const select = row.querySelector('.product-select');
+                const qtyInput = row.querySelector('.qty-input');
+                const priceField = row.querySelector('.product-price');
+                const rowTotalField = row.querySelector('.product-total');
+
+                if (!select || !qtyInput) return;
+
+                const price = parseFloat(select.selectedOptions[0]?.dataset.price || 0);
+                const qty = parseInt(qtyInput.value || 0);
+                const rowTotal = price * qty;
+
+                if (!isNaN(rowTotal)) {
+                    priceField.value = price.toFixed(2);
+                    rowTotalField.value = rowTotal.toFixed(2);
+                    total += rowTotal;
+                }
+            });
+
+            document.getElementById("order-total").innerText = total.toFixed(2);
+        }
+
+        // Добавете тази функция за инициализация
+        function initializeProductRows() {
+            document.querySelectorAll('.product-row').forEach(row => {
+                const select = row.querySelector('.product-select');
+                if (select && select.selectedIndex > 0) {
+                    // Веднага актуализираме totals при зареждане
+                    updateTotals();
+                }
+            });
+        }
+
+        window.onload = function () {
+            initializeProductRows();
+            updateTotals();
+        }
+
+        function addProductRow() {
+            const list = document.querySelector('#product-list');
+            const index = list.querySelectorAll('.product-row').length;
+
+            const template = `
+                <div class="product-row row g-3 mb-2">
+
+                    <div class="col-md-4">
+                        <select class="form-select product-select" name="items[${index}].productId" onchange="updateTotals()" required>
+                            <option value="" disabled selected>Избери продукт</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="number" class="form-control qty-input" name="items[${index}].quantity" min="1" value="1" oninput="updateTotals()" required>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="text" class="form-control product-price" disabled placeholder="Цена">
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="text" class="form-control product-total" disabled placeholder="Общо">
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-danger w-100" onclick="removeRow(this)">❌</button>
+                    </div>
+                </div>
+            `;
+
+            const row = document.createElement('div');
+            row.innerHTML = template;
+
+            const firstSelect = document.querySelector('.product-select');
+            const newSelect = row.querySelector('select');
+            newSelect.innerHTML = firstSelect.innerHTML;
+
+            newSelect.addEventListener("change", updateTotals);
+
+            list.appendChild(row.firstElementChild);
+        }
+
+        function removeRow(btn) {
+            btn.closest('.product-row').remove();
+            updateTotals();
+        }
+    </script>
+</head>
+
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="card shadow-sm p-4 mx-auto" style="max-width: 900px;">
+        <h3 class="text-center mb-4">✏️ Редактирай поръчка</h3>
+
+        <form th:action="@{'/orders/edit/' + ${order.id}}" th:object="${order}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+            <!-- Клиент -->
+            <div class="mb-3">
+                <label class="form-label">Клиент</label>
+                <select class="form-select" th:field="*{customerId}" required>
+                    <option value="" disabled>Избери клиент</option>
+                    <option th:each="c : ${customers}"
+                            th:value="${c.id}"
+                            th:text="${c.name}"
+                            th:selected="${c.id == order.customerId}">
+                    </option>
+                </select>
+                <!-- Добавете това за показване на грешки при валидация -->
+                <div th:if="${#fields.hasErrors('customerId')}" class="text-danger">
+                    <small th:each="err : ${#fields.errors('customerId')}" th:text="${err}"></small>
+                </div>
+            </div>
+
+            <!-- Продукти -->
+            <h5 class="mb-3">📦 Продукти</h5>
+
+            <div id="product-list">
+
+                <div th:each="item, iterStat : ${order.items}" class="product-row row g-3 mb-2">
+
+                    <div class="col-md-4">
+                        <select class="form-select product-select"
+                                th:name="'items[' + ${iterStat.index} + '].productId'"
+                                onchange="updateTotals()" required>
+                            <option value="" disabled>Избери продукт</option>
+
+                            <option th:each="p : ${products}"
+                                    th:value="${p.id}"
+                                    th:text="${p.name} + ' (' + ${p.quantity} + ' бр.)'"
+                                    th:selected="${p.id == item.productId}"
+                                    th:data-price="${p.price}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="number"
+                               class="form-control qty-input"
+                               th:name="'items[' + ${iterStat.index} + '].quantity'"
+                               th:value="${item.quantity}"
+                               min="1" oninput="updateTotals()" required>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="text" class="form-control product-price" disabled placeholder="Цена">
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="text" class="form-control product-total" disabled placeholder="Общо">
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-danger w-100" onclick="removeRow(this)">❌</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button type="button" class="btn btn-outline-primary w-100 mt-3" onclick="addProductRow()">➕ Добави още продукт</button>
+
+            <hr>
+
+            <h4 class="text-end">🧮 Обща сума: <span id="order-total" class="fw-bold">0.00</span> лв.</h4>
+
+            <div class="d-grid mt-3">
+                <button type="submit" class="btn btn-success">💾 Запиши промените</button>
+            </div>
+        </form>
+
+        <div th:if="${error}" class="alert alert-danger mt-3" th:text="${error}"></div>
+
+        <div class="text-center mt-3">
+            <a th:href="@{/orders}" class="text-decoration-none">← Назад към поръчките</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

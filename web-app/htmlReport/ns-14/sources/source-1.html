@@ -1,0 +1,105 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > InvoiceDTO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.invoiceservice.dto</a>
+</div>
+
+<h1>Coverage Summary for Class: InvoiceDTO (org.example.invoiceservice.dto)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">InvoiceDTO</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.invoiceservice.dto;
+&nbsp;
+&nbsp;import jakarta.validation.constraints.NotBlank;
+&nbsp;import jakarta.validation.constraints.NotNull;
+&nbsp;import jakarta.validation.constraints.Positive;
+&nbsp;import lombok.AllArgsConstructor;
+&nbsp;import lombok.Builder;
+&nbsp;import lombok.Data;
+&nbsp;import lombok.NoArgsConstructor;
+&nbsp;
+&nbsp;import java.math.BigDecimal;
+&nbsp;import java.time.LocalDateTime;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;@Data
+&nbsp;@NoArgsConstructor
+&nbsp;@AllArgsConstructor
+&nbsp;@Builder
+&nbsp;public class InvoiceDTO {
+&nbsp;
+&nbsp;    private UUID id;
+&nbsp;
+&nbsp;    @NotNull(message = &quot;Order ID is required&quot;)
+&nbsp;    private UUID orderId;
+&nbsp;
+&nbsp;    @NotBlank(message = &quot;EIK cannot be blank&quot;)
+&nbsp;    private String eik;
+&nbsp;
+&nbsp;    @NotBlank(message = &quot;Customer name cannot be blank&quot;)
+&nbsp;    private String customerName;
+&nbsp;
+&nbsp;    @NotNull(message = &quot;Total amount is required&quot;)
+&nbsp;    @Positive(message = &quot;Total amount must be positive&quot;)
+&nbsp;    private BigDecimal totalAmount;
+&nbsp;
+&nbsp;    private LocalDateTime issuedOn;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-26 18:19</div>
+</div>
+</body>
+</html>

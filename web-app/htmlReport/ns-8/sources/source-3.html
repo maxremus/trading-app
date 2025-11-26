@@ -1,0 +1,231 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CustomerController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.tradingapp.tradingapp.web</a>
+</div>
+
+<h1>Coverage Summary for Class: CustomerController (com.tradingapp.tradingapp.web)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CustomerController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85,7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (4/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    64,1%
+  </span>
+  <span class="absValue">
+    (25/39)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.tradingapp.tradingapp.web;
+&nbsp;
+&nbsp;import com.tradingapp.tradingapp.entities.Customer;
+&nbsp;import com.tradingapp.tradingapp.repositories.CustomerRepository;
+&nbsp;import com.tradingapp.tradingapp.services.CustomerService;
+&nbsp;import com.tradingapp.tradingapp.web.dto.CustomerDTO;
+&nbsp;import jakarta.validation.Valid;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Controller;
+&nbsp;import org.springframework.validation.BindingResult;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;import org.springframework.web.servlet.ModelAndView;
+&nbsp;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;@Controller
+&nbsp;@RequestMapping(&quot;/customers&quot;)
+&nbsp;public class CustomerController {
+&nbsp;
+&nbsp;    private final CustomerService customerService;
+&nbsp;    private final CustomerRepository customerRepository;
+&nbsp;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public CustomerController(CustomerService customerService, CustomerRepository customerRepository) {</b>
+<b class="fc">&nbsp;        this.customerService = customerService;</b>
+<b class="fc">&nbsp;        this.customerRepository = customerRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/edit/{id}&quot;)
+&nbsp;    public ModelAndView showEditForm(@PathVariable UUID id) {
+&nbsp;
+<b class="fc">&nbsp;        ModelAndView modelAndView = new ModelAndView(&quot;edit-customer&quot;);</b>
+<b class="fc">&nbsp;        Customer customer = customerService.getCustomerById(id);</b>
+<b class="fc">&nbsp;        modelAndView.addObject(&quot;customer&quot;, customer);</b>
+&nbsp;
+<b class="fc">&nbsp;        return modelAndView;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/edit/{id}&quot;)
+&nbsp;    public ModelAndView updateCustomer(@PathVariable UUID id,
+&nbsp;                                       @Valid @ModelAttribute(&quot;customer&quot;) Customer customer,
+&nbsp;                                       BindingResult result) {
+&nbsp;
+<b class="nc">&nbsp;        if (result.hasErrors()) {</b>
+<b class="nc">&nbsp;            return new ModelAndView(&quot;edit-customer&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        Customer existing = customerService.getCustomerById(id);</b>
+<b class="nc">&nbsp;        existing.setName(customer.getName());</b>
+<b class="nc">&nbsp;        existing.setEik(customer.getEik());</b>
+<b class="nc">&nbsp;        existing.setEmail(customer.getEmail());</b>
+<b class="nc">&nbsp;        existing.setAddress(customer.getAddress());</b>
+<b class="nc">&nbsp;        customerService.saveCustomer(existing);</b>
+&nbsp;
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/customers&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping
+&nbsp;    public ModelAndView listCustomers() {
+&nbsp;
+<b class="fc">&nbsp;        ModelAndView modelAndView = new ModelAndView(&quot;customers&quot;);</b>
+<b class="fc">&nbsp;        modelAndView.addObject(&quot;customers&quot;, customerService.getAllCustomers());</b>
+<b class="fc">&nbsp;        modelAndView.addObject(&quot;activePage&quot;, &quot;customers&quot;);</b>
+&nbsp;
+<b class="fc">&nbsp;        return modelAndView;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/add&quot;)
+&nbsp;    public ModelAndView showAddForm() {
+&nbsp;
+<b class="fc">&nbsp;        ModelAndView modelAndView= new ModelAndView(&quot;add-customer&quot;);</b>
+<b class="fc">&nbsp;        modelAndView.addObject(&quot;customer&quot;, new CustomerDTO());</b>
+&nbsp;
+<b class="fc">&nbsp;        return modelAndView;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/add&quot;)
+&nbsp;    public ModelAndView addCustomer(@Valid @ModelAttribute(&quot;customer&quot;) Customer customer,
+&nbsp;                                    BindingResult result) {
+&nbsp;
+<b class="fc">&nbsp;        ModelAndView modelAndView = new ModelAndView(&quot;add-customer&quot;);</b>
+&nbsp;
+&nbsp;        // Проверка за невалидни полета (валидация от @Size)
+<b class="pc">&nbsp;        if (result.hasErrors()) {</b>
+<b class="nc">&nbsp;            modelAndView.addObject(&quot;error&quot;, &quot;Please fill in all fields correctly.&quot;);</b>
+<b class="nc">&nbsp;            return modelAndView;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Проверка дали вече има клиент с този ЕИК
+<b class="fc">&nbsp;        if (customerRepository.existsByEik(customer.getEik())) {</b>
+<b class="fc">&nbsp;            result.rejectValue(&quot;eik&quot;, &quot;error.customer&quot;, &quot;A customer with this name already exists. ЕИК!&quot;);</b>
+<b class="fc">&nbsp;            modelAndView.addObject(&quot;error&quot;, &quot;A customer with this name already exists. ЕИК!&quot;);</b>
+<b class="fc">&nbsp;            return modelAndView;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // Проверка за дублиран имейл (по желание)
+<b class="pc">&nbsp;        if (customerRepository.existsByEmail(customer.getEmail())) {</b>
+<b class="nc">&nbsp;            result.rejectValue(&quot;email&quot;, &quot;error.customer&quot;, &quot;Email is already registered!&quot;);</b>
+<b class="nc">&nbsp;            modelAndView.addObject(&quot;error&quot;, &quot;Email is already registered!&quot;);</b>
+<b class="nc">&nbsp;            return modelAndView;</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        customerService.saveCustomer(customer);</b>
+&nbsp;
+<b class="fc">&nbsp;        return new ModelAndView(&quot;redirect:/customers&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/delete/{id}&quot;)
+&nbsp;    public ModelAndView deleteCustomer(@PathVariable UUID id) {
+&nbsp;
+<b class="fc">&nbsp;        customerService.deleteCustomer(id);</b>
+&nbsp;
+<b class="fc">&nbsp;        return new ModelAndView(&quot;redirect:/customers&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-26 18:19</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CustomerServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.tradingapp.tradingapp.services.impl</a>
+</div>
+
+<h1>Coverage Summary for Class: CustomerServiceImpl (com.tradingapp.tradingapp.services.impl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CustomerServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (17/17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.tradingapp.tradingapp.services.impl;
+&nbsp;
+&nbsp;import com.tradingapp.tradingapp.entities.Customer;
+&nbsp;import com.tradingapp.tradingapp.repositories.CustomerRepository;
+&nbsp;import com.tradingapp.tradingapp.repositories.OrderRepository;
+&nbsp;import com.tradingapp.tradingapp.services.CustomerService;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.slf4j.Logger;
+&nbsp;import org.slf4j.LoggerFactory;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class CustomerServiceImpl implements CustomerService {
+&nbsp;
+<b class="fc">&nbsp;    private static final Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);</b>
+&nbsp;
+&nbsp;    private final CustomerRepository customerRepository;
+&nbsp;    private final OrderRepository orderRepository;
+&nbsp;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public CustomerServiceImpl(CustomerRepository customerRepository, OrderRepository orderRepository) {</b>
+<b class="fc">&nbsp;        this.customerRepository = customerRepository;</b>
+<b class="fc">&nbsp;        this.orderRepository = orderRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;Customer&gt; getAllCustomers() {
+&nbsp;
+<b class="fc">&nbsp;        log.info(&quot;Retrieving all customers from the database&quot;);</b>
+<b class="fc">&nbsp;        return customerRepository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Customer getCustomerById(UUID id) {
+&nbsp;
+<b class="fc">&nbsp;        log.info(&quot; Search for a customer with ID: {}&quot;, id);</b>
+<b class="fc">&nbsp;        return customerRepository.findById(id).orElseThrow(() -&gt; {</b>
+<b class="fc">&nbsp;            log.warn(&quot; Customer with ID {} not found!&quot;, id);</b>
+<b class="fc">&nbsp;            return new RuntimeException(&quot;Customer not found!&quot;);</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Customer saveCustomer(Customer customer) {
+&nbsp;
+<b class="fc">&nbsp;        log.info(&quot;Add a customer: {}&quot;, customer.getName());</b>
+<b class="fc">&nbsp;        Customer saved = customerRepository.save(customer);</b>
+<b class="fc">&nbsp;        log.info(&quot;The client &#39;{}&#39; has been successfully registered with ID: {}&quot;, saved.getName(), saved.getId());</b>
+<b class="fc">&nbsp;        return saved;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void deleteCustomer(UUID id) {
+&nbsp;
+<b class="fc">&nbsp;        if (orderRepository.existsByCustomer_Id(id)) {</b>
+<b class="fc">&nbsp;            throw new IllegalStateException(&quot;The customer has orders and cannot be deleted.&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        customerRepository.deleteById(id);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-26 18:19</div>
+</div>
+</body>
+</html>

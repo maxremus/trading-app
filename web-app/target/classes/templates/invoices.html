@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Фактури</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6f7fb;
+            margin: 40px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 10px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #2980b9;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .details-link {
+            background-color: #27ae60;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<h2>📄 Списък с фактури</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Поръчка</th>
+        <th>Клиент</th>
+        <th>Сума</th>
+        <th>Дата</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="invoice : ${invoices}">
+        <td th:text="${invoice.id}"></td>
+        <td th:text="${invoice.orderId}"></td>
+        <td th:text="${invoice.customerName}"></td>
+        <td th:text="${invoice.totalAmount} + ' лв.'"></td>
+        <td th:text="${#temporals.format(invoice.issuedOn, 'dd.MM.yyyy HH:mm')}"></td>
+        <td>
+            <a th:href="@{/invoices/{id}(id=${invoice.id})}" class="details-link">Детайли</a>
+
+            <form th:action="@{/invoices/delete/{id}(id=${invoice.id})}" method="post" style="display:inline;">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit" class="delete-btn">Изтрий</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

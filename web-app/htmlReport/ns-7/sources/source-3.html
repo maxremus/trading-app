@@ -1,0 +1,179 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ProductServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.tradingapp.tradingapp.services.impl</a>
+</div>
+
+<h1>Coverage Summary for Class: ProductServiceImpl (com.tradingapp.tradingapp.services.impl)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProductServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/14)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ProductServiceImpl$$SpringCGLIB$$0</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/14)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.tradingapp.tradingapp.services.impl;
+&nbsp;
+&nbsp;import com.tradingapp.tradingapp.entities.Product;
+&nbsp;import com.tradingapp.tradingapp.error.ProductNotFoundException;
+&nbsp;import com.tradingapp.tradingapp.repositories.ProductRepository;
+&nbsp;import com.tradingapp.tradingapp.services.ProductService;
+&nbsp;import jakarta.transaction.Transactional;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.cache.annotation.CacheEvict;
+&nbsp;import org.springframework.cache.annotation.Cacheable;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.slf4j.Logger;
+&nbsp;import org.slf4j.LoggerFactory;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;@Service
+&nbsp;@Transactional
+&nbsp;public class ProductServiceImpl implements ProductService {
+&nbsp;
+<b class="fc">&nbsp;    private static final Logger log = LoggerFactory.getLogger(ProductServiceImpl.class);</b>
+&nbsp;
+&nbsp;    private final ProductRepository productRepository;
+&nbsp;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public ProductServiceImpl(ProductRepository productRepository) {</b>
+<b class="fc">&nbsp;        this.productRepository = productRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    @Cacheable(&quot;products&quot;)
+&nbsp;    public List&lt;Product&gt; getAllProducts() {
+&nbsp;
+<b class="fc">&nbsp;        log.info(&quot;Retrieve all products from the database&quot;);</b>
+<b class="fc">&nbsp;        return productRepository.findAll();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Product findById(UUID id) {
+&nbsp;
+<b class="fc">&nbsp;        log.info(&quot;Search for a product with ID: {}&quot;, id);</b>
+<b class="fc">&nbsp;        return productRepository.findById(id)</b>
+<b class="fc">&nbsp;                .orElseThrow(() -&gt; {</b>
+<b class="fc">&nbsp;                    log.warn(&quot; Product with ID {} not found!&quot;, id);</b>
+<b class="fc">&nbsp;                    return new RuntimeException(&quot;Product not found!&quot;);</b>
+&nbsp;                });
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    @CacheEvict(value = &quot;products&quot;, allEntries = true)
+&nbsp;    public Product saveProduct(Product product) {
+&nbsp;
+<b class="fc">&nbsp;        log.info(&quot;Save product: {}&quot;, product.getName());</b>
+<b class="fc">&nbsp;        return productRepository.save(product);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    @CacheEvict(value = &quot;products&quot;, allEntries = true)
+&nbsp;    public void deleteProduct(UUID id) {
+&nbsp;
+<b class="fc">&nbsp;        log.info(&quot;Delete a product with ID: {}&quot;, id);</b>
+<b class="fc">&nbsp;        productRepository.deleteById(id);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-26 18:19</div>
+</div>
+</body>
+</html>

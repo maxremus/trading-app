@@ -1,0 +1,199 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > InvoicePdfService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.invoiceservice.service</a>
+</div>
+
+<h1>Coverage Summary for Class: InvoicePdfService (org.example.invoiceservice.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">InvoicePdfService</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/36)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.invoiceservice.service;
+&nbsp;
+&nbsp;import org.apache.pdfbox.pdmodel.PDDocument;
+&nbsp;import org.apache.pdfbox.pdmodel.PDPage;
+&nbsp;import org.apache.pdfbox.pdmodel.PDPageContentStream;
+&nbsp;import org.apache.pdfbox.pdmodel.common.PDRectangle;
+&nbsp;import org.apache.pdfbox.pdmodel.font.PDType0Font;
+&nbsp;import org.apache.pdfbox.pdmodel.font.PDType1Font;
+&nbsp;import org.example.invoiceservice.entity.Invoice;
+&nbsp;import org.example.invoiceservice.repository.InvoiceRepository;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.io.ByteArrayOutputStream;
+&nbsp;import java.io.IOException;
+&nbsp;import java.io.InputStream;
+&nbsp;import java.time.format.DateTimeFormatter;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class InvoicePdfService {
+&nbsp;
+&nbsp;    private final InvoiceRepository invoiceRepository;
+&nbsp;
+&nbsp;    @Autowired
+<b class="nc">&nbsp;    public InvoicePdfService(InvoiceRepository invoiceRepository) {</b>
+<b class="nc">&nbsp;        this.invoiceRepository = invoiceRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public byte[] generateInvoicePdf(UUID id) {
+&nbsp;
+<b class="nc">&nbsp;        Invoice invoice = invoiceRepository.findById(id)</b>
+<b class="nc">&nbsp;                .orElseThrow(() -&gt; new RuntimeException(&quot;Invoice not found.&quot;));</b>
+&nbsp;
+<b class="nc">&nbsp;        try (PDDocument document = new PDDocument();</b>
+<b class="nc">&nbsp;             ByteArrayOutputStream out = new ByteArrayOutputStream()) {</b>
+&nbsp;
+&nbsp;            // Зареждаме Unicode шрифт (DejaVuSans)
+<b class="nc">&nbsp;            InputStream fontStream = getClass().getResourceAsStream(&quot;/fonts/DejaVuSans.ttf&quot;);</b>
+<b class="nc">&nbsp;            if (fontStream == null) {</b>
+<b class="nc">&nbsp;                throw new RuntimeException(&quot;Font DejaVuSans.ttf not found in resources/fonts/&quot;);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            var font = PDType0Font.load(document, fontStream);</b>
+&nbsp;
+<b class="nc">&nbsp;            PDPage page = new PDPage(PDRectangle.A4);</b>
+<b class="nc">&nbsp;            document.addPage(page);</b>
+&nbsp;
+<b class="nc">&nbsp;            PDPageContentStream content = new PDPageContentStream(document, page);</b>
+&nbsp;
+&nbsp;            // Заглавие
+<b class="nc">&nbsp;            content.beginText();</b>
+<b class="nc">&nbsp;            content.setFont(font, 18);</b>
+<b class="nc">&nbsp;            content.newLineAtOffset(70, 750);</b>
+<b class="nc">&nbsp;            content.showText(&quot;Фактура № &quot; + invoice.getId());</b>
+<b class="nc">&nbsp;            content.endText();</b>
+&nbsp;
+&nbsp;            // Подробности
+<b class="nc">&nbsp;            int y = 710;</b>
+<b class="nc">&nbsp;            content.beginText();</b>
+<b class="nc">&nbsp;            content.setFont(font, 12);</b>
+<b class="nc">&nbsp;            content.newLineAtOffset(70, y);</b>
+<b class="nc">&nbsp;            content.showText(&quot;Поръчка: &quot; + invoice.getOrderId());</b>
+<b class="nc">&nbsp;            content.newLineAtOffset(0, -20);</b>
+<b class="nc">&nbsp;            content.showText(&quot;Клиент: &quot; + invoice.getCustomerName());</b>
+<b class="nc">&nbsp;            content.newLineAtOffset(0, -20);</b>
+<b class="nc">&nbsp;            content.showText(&quot;ЕИК:&quot; + invoice.getEik());</b>
+<b class="nc">&nbsp;            content.newLineAtOffset(0, -20);</b>
+<b class="nc">&nbsp;            content.showText(&quot;Дата на издаване: &quot; +</b>
+<b class="nc">&nbsp;                    invoice.getIssuedOn().format(DateTimeFormatter.ofPattern(&quot;dd.MM.yyyy HH:mm&quot;)));</b>
+<b class="nc">&nbsp;            content.newLineAtOffset(0, -20);</b>
+<b class="nc">&nbsp;            content.showText(&quot;Обща сума: &quot; + invoice.getTotalAmount() + &quot; лв.&quot;);</b>
+<b class="nc">&nbsp;            content.endText();</b>
+&nbsp;
+&nbsp;            content.close();
+&nbsp;
+<b class="nc">&nbsp;            document.save(out);</b>
+<b class="nc">&nbsp;            return out.toByteArray();</b>
+&nbsp;
+&nbsp;        } catch (IOException e) {
+<b class="nc">&nbsp;            throw new RuntimeException(&quot;Error generating PDF: &quot; + e.getMessage());</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-26 18:19</div>
+</div>
+</body>
+</html>

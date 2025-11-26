@@ -1,0 +1,225 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > UserController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.tradingapp.tradingapp.web</a>
+</div>
+
+<h1>Coverage Summary for Class: UserController (com.tradingapp.tradingapp.web)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (2/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10,5%
+  </span>
+  <span class="absValue">
+    (4/38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.tradingapp.tradingapp.web;
+&nbsp;
+&nbsp;import com.tradingapp.tradingapp.entities.User;
+&nbsp;import com.tradingapp.tradingapp.entities.UserRole;
+&nbsp;import com.tradingapp.tradingapp.repositories.UserRepository;
+&nbsp;import com.tradingapp.tradingapp.web.dto.LoginDto;
+&nbsp;import com.tradingapp.tradingapp.web.dto.UserRegisterDto;
+&nbsp;import jakarta.validation.Valid;
+&nbsp;import org.slf4j.Logger;
+&nbsp;import org.slf4j.LoggerFactory;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.security.crypto.password.PasswordEncoder;
+&nbsp;import org.springframework.stereotype.Controller;
+&nbsp;import org.springframework.validation.BindingResult;
+&nbsp;import org.springframework.web.bind.annotation.GetMapping;
+&nbsp;import org.springframework.web.bind.annotation.ModelAttribute;
+&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+&nbsp;import org.springframework.web.servlet.ModelAndView;
+&nbsp;import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+&nbsp;
+&nbsp;@Controller
+&nbsp;public class UserController {
+&nbsp;
+<b class="fc">&nbsp;    private static final Logger log = LoggerFactory.getLogger(UserController.class);</b>
+&nbsp;
+&nbsp;    private final UserRepository userRepository;
+&nbsp;    private final PasswordEncoder passwordEncoder;
+&nbsp;
+&nbsp;    @Autowired
+<b class="fc">&nbsp;    public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder) {</b>
+<b class="fc">&nbsp;        this.userRepository = userRepository;</b>
+<b class="fc">&nbsp;        this.passwordEncoder = passwordEncoder;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/login&quot;)
+&nbsp;    public ModelAndView showLoginPage(@ModelAttribute(&quot;successMessage&quot;) String successMessage) {
+&nbsp;
+<b class="nc">&nbsp;        log.info(&quot; Open the login page.&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        ModelAndView modelAndView = new ModelAndView(&quot;login&quot;);</b>
+<b class="nc">&nbsp;        modelAndView.addObject(&quot;loginDto&quot;, new LoginDto());</b>
+&nbsp;
+<b class="nc">&nbsp;        if (successMessage != null &amp;&amp; !successMessage.isEmpty()) {</b>
+<b class="nc">&nbsp;            modelAndView.addObject(&quot;successMessage&quot;, successMessage);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return modelAndView;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/register&quot;)
+&nbsp;    public ModelAndView showRegisterPage() {
+&nbsp;
+<b class="nc">&nbsp;        log.info(&quot; Open the registration page.&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        ModelAndView modelAndView = new ModelAndView();</b>
+<b class="nc">&nbsp;        modelAndView.addObject(&quot;user&quot;, new UserRegisterDto());</b>
+<b class="nc">&nbsp;        modelAndView.setViewName(&quot;register&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        return modelAndView;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/register&quot;)
+&nbsp;    public ModelAndView registerUser(
+&nbsp;            @Valid @ModelAttribute(&quot;user&quot;) UserRegisterDto dto,
+&nbsp;            BindingResult result,
+&nbsp;            RedirectAttributes redirectAttributes) {
+&nbsp;
+<b class="nc">&nbsp;        ModelAndView modelAndView = new ModelAndView(&quot;register&quot;);</b>
+&nbsp;
+&nbsp;        // validation errors
+<b class="nc">&nbsp;        if (result.hasErrors()) {</b>
+<b class="nc">&nbsp;            log.warn(&quot;Registration error: invalid fields for &#39;{}&#39;.&quot;, dto.getUsername());</b>
+<b class="nc">&nbsp;            modelAndView.addObject(&quot;error&quot;, &quot;Please fill in all fields correctly.&quot;);</b>
+<b class="nc">&nbsp;            return modelAndView;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // password mismatch
+<b class="nc">&nbsp;        if (!dto.getPassword().equals(dto.getConfirmPassword())) {</b>
+<b class="nc">&nbsp;            log.warn(&quot;Password mismatch during registration for &#39;{}&#39;.&quot;, dto.getUsername());</b>
+<b class="nc">&nbsp;            modelAndView.addObject(&quot;error&quot;, &quot;Passwords do not match!&quot;);</b>
+<b class="nc">&nbsp;            return modelAndView;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // username exists
+<b class="nc">&nbsp;        if (userRepository.findByUsername(dto.getUsername()).isPresent()) {</b>
+<b class="nc">&nbsp;            log.warn(&quot;Existing username used: &#39;{}&#39;.&quot;, dto.getUsername());</b>
+<b class="nc">&nbsp;            modelAndView.addObject(&quot;error&quot;, &quot;Username already exists!&quot;);</b>
+<b class="nc">&nbsp;            return modelAndView;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        // save new user
+<b class="nc">&nbsp;        User user = User.builder()</b>
+<b class="nc">&nbsp;                .username(dto.getUsername())</b>
+<b class="nc">&nbsp;                .password(passwordEncoder.encode(dto.getPassword()))</b>
+<b class="nc">&nbsp;                .role(UserRole.USER)</b>
+<b class="nc">&nbsp;                .active(true)</b>
+<b class="nc">&nbsp;                .build();</b>
+&nbsp;
+<b class="nc">&nbsp;        userRepository.save(user);</b>
+&nbsp;
+<b class="nc">&nbsp;        log.info(&quot;Successful registration of new user &#39;{}&#39;.&quot;, user.getUsername());</b>
+&nbsp;
+&nbsp;        // add success message and redirect
+<b class="nc">&nbsp;        redirectAttributes.addFlashAttribute(&quot;successMessage&quot;,</b>
+&nbsp;                &quot;Registration successful! You can now log in.&quot;);
+&nbsp;
+<b class="nc">&nbsp;        return new ModelAndView(&quot;redirect:/login&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-26 18:19</div>
+</div>
+</body>
+</html>

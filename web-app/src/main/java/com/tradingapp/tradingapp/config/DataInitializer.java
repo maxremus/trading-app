@@ -24,7 +24,8 @@ public class DataInitializer {
 
                 User admin = User.builder()
                         .username("admin")
-                        .password(passwordEncoder.encode("admin123")) // паролата
+                        .password(passwordEncoder.encode("admin123"))
+                        .active(true)
                         .role(UserRole.ADMIN)
                         .build();
 

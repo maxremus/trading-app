@@ -1,0 +1,105 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Invoice</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.invoiceservice.entity</a>
+</div>
+
+<h1>Coverage Summary for Class: Invoice (org.example.invoiceservice.entity)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">Invoice</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.invoiceservice.entity;
+&nbsp;
+&nbsp;import jakarta.persistence.*;
+&nbsp;import lombok.*;
+&nbsp;
+&nbsp;import java.math.BigDecimal;
+&nbsp;import java.time.LocalDateTime;
+&nbsp;import java.util.UUID;
+&nbsp;
+&nbsp;@Entity
+&nbsp;@Table(name = &quot;invoices&quot;)
+&nbsp;@Getter
+&nbsp;@Setter
+&nbsp;@NoArgsConstructor
+&nbsp;@AllArgsConstructor
+&nbsp;@Builder
+&nbsp;public class Invoice {
+&nbsp;
+&nbsp;    @Id
+&nbsp;    @GeneratedValue(strategy = GenerationType.UUID)
+&nbsp;    private UUID id;
+&nbsp;
+&nbsp;    @Column(nullable = false)
+&nbsp;    private UUID orderId;
+&nbsp;
+&nbsp;    @Column(nullable = false)
+&nbsp;    private String eik;
+&nbsp;
+&nbsp;    @Column(nullable = false)
+&nbsp;    private String customerName;
+&nbsp;
+&nbsp;    @Column(nullable = false)
+&nbsp;    private BigDecimal totalAmount;
+&nbsp;
+&nbsp;    @Column(nullable = false)
+&nbsp;    private LocalDateTime issuedOn;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-26 18:19</div>
+</div>
+</body>
+</html>

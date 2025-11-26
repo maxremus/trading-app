@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8ec7baf6-e317-4063-95a9-f0396144bfa1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/web-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/config/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/config/DataInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/src/main/resources/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/main/resources/templates/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/test/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/src/test/resources/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/test/resources/templates/account.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="0" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\Max\Downloads\trading-app\web-app\htmlReport" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;maxremus&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/maxremus/trading-app.git&quot;,
+    &quot;accountId&quot;: &quot;e44d4ae8-1e1a-4654-a875-566468fc4794&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="34eikgAOyYCB1oUib4pWxnsWxCC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.AccountControllerApiTest.executor": "Coverage",
+    "JUnit.AdminUserControllerApiTest.executor": "Coverage",
+    "JUnit.AdminUserControllerApiTest.listUsers_WithoutAdminRole_ShouldBeForbidden.executor": "Run",
+    "JUnit.CustomerServiceImplTest and 1 more.executor": "Coverage",
+    "JUnit.CustomerServiceImplTest.executor": "Run",
+    "JUnit.CustomerServiceImplTest.getAllCustomers_ShouldReturnAllCustomers.executor": "Run",
+    "JUnit.DashboardControllerApiTest.executor": "Coverage",
+    "JUnit.DashboardControllerApiTest.showDashboard_WithoutAuthentication_ShouldReturnUnauthorized.executor": "Coverage",
+    "JUnit.GlobalControllerAdviceTest.executor": "Coverage",
+    "JUnit.GlobalExceptionHandlerTest (1).executor": "Coverage",
+    "JUnit.GlobalExceptionHandlerTest.executor": "Coverage",
+    "JUnit.HomeControllerApiTest.executor": "Coverage",
+    "JUnit.InvoiceControllerTest.executor": "Coverage",
+    "JUnit.InvoiceMapperTest.executor": "Coverage",
+    "JUnit.InvoicePdfServiceTest.executor": "Coverage",
+    "JUnit.InvoiceServiceIntegrationTest.executor": "Coverage",
+    "JUnit.InvoiceServiceTest.executor": "Coverage",
+    "JUnit.InvoiceViewControllerApiTest.executor": "Coverage",
+    "JUnit.OrderControllerApiTest.executor": "Coverage",
+    "JUnit.OrderControllerApiTest.showEditForm_ShouldReturnEditOrderPage.executor": "Run",
+    "JUnit.OrderServiceImplTest.executor": "Coverage",
+    "JUnit.OrderServiceImplTest.saveOrder_WhenCustomerNotFound_ShouldThrowException.executor": "Run",
+    "JUnit.OrderServiceIntegrationTest.executor": "Coverage",
+    "JUnit.ProductControllerApiTest.addProduct_WithEmptyName_ShouldReturnFormWithErrors.executor": "Run",
+    "JUnit.ProductControllerApiTest.executor": "Coverage",
+    "JUnit.ProductServiceImplTest.deleteProduct_ShouldCallRepositoryDelete.executor": "Coverage",
+    "JUnit.ProductServiceImplTest.executor": "Run",
+    "JUnit.ProductServiceImplTest.findById_WhenProductExists_ShouldReturnProduct.executor": "Coverage",
+    "JUnit.ProductServiceImplTest.findById_WhenProductNotExists_ShouldThrowException.executor": "Run",
+    "JUnit.ProductServiceImplTest.getAllProducts_ShouldReturnAllProducts.executor": "Coverage",
+    "JUnit.ProductServiceImplTest.saveProduct_ShouldSaveAndReturnProduct.executor": "Run",
+    "JUnit.UserControllerApiTest.executor": "Coverage",
+    "JUnit.UserControllerApiTest.registerUser_WithExistingUsername_ShouldReturnError.executor": "Coverage",
+    "JUnit.UserControllerApiTest.showRegisterPage_ShouldBeUnauthorized.executor": "Run",
+    "JUnit.UserControllerApiTest.showRegisterPage_ShouldReturnRegisterPage.executor": "Run",
+    "JUnit.invoiceservice in invoice-service.executor": "Coverage",
+    "JUnit.java in TradingApp.executor": "Coverage",
+    "JUnit.service in TradingApp.executor": "Coverage",
+    "JUnit.service in invoice-service.executor": "Coverage",
+    "JUnit.tradingapp in TradingApp.executor": "Coverage",
+    "JUnit.web in TradingApp.executor": "Coverage",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.InvoiceServiceApplication.executor": "Run",
+    "Spring Boot.TradingAppApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/Max/Downloads/trading-app/src/main/java/com/tradingapp/tradingapp/services",
+    "last_opened_file_path": "C:/Users/Max/Downloads/trading-app/web-app/src/test/resources/templates",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.general",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.tradingapp.tradingapp.services" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Max\Downloads\trading-app\web-app\src\test\resources\templates" />
+      <recent name="C:\Users\Max\Downloads\trading-app\invoice-service\src\test" />
+      <recent name="C:\Users\Max\Downloads\trading-app\invoice-service\src\test\java" />
+      <recent name="C:\Users\Max\Downloads\trading-app\web-app\src\test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.invoiceservice in invoice-service">
+    <configuration name="AdminUserControllerApiTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TradingApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tradingapp.tradingapp.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tradingapp.tradingapp.web" />
+      <option name="MAIN_CLASS_NAME" value="com.tradingapp.tradingapp.web.AdminUserControllerApiTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GlobalControllerAdviceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TradingApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tradingapp.tradingapp.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tradingapp.tradingapp.web" />
+      <option name="MAIN_CLASS_NAME" value="com.tradingapp.tradingapp.web.GlobalControllerAdviceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HomeControllerApiTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TradingApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tradingapp.tradingapp.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tradingapp.tradingapp.web" />
+      <option name="MAIN_CLASS_NAME" value="com.tradingapp.tradingapp.web.HomeControllerApiTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="invoiceservice in invoice-service" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="invoice-service" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/invoice-service/src/test/java/org/example/invoiceservice" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="tradingapp in TradingApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TradingApp" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/web-app/src/test/java/com/tradingapp/tradingapp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InvoiceServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="invoice-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.invoiceservice.InvoiceServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TradingAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="TradingApp" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tradingapp.tradingapp.TradingAppApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.invoiceservice in invoice-service" />
+        <item itemvalue="JUnit.tradingapp in TradingApp" />
+        <item itemvalue="JUnit.HomeControllerApiTest" />
+        <item itemvalue="JUnit.AdminUserControllerApiTest" />
+        <item itemvalue="JUnit.GlobalControllerAdviceTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8ec7baf6-e317-4063-95a9-f0396144bfa1" name="Changes" comment="" />
+      <created>1761580583232</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761580583232</updated>
+      <workItem from="1761580584373" duration="263000" />
+      <workItem from="1761826181609" duration="17546000" />
+      <workItem from="1762317962757" duration="5687000" />
+      <workItem from="1762447043804" duration="7437000" />
+      <workItem from="1762588322302" duration="918000" />
+      <workItem from="1762589992684" duration="352000" />
+      <workItem from="1762590400778" duration="3000" />
+      <workItem from="1762590807848" duration="22000" />
+      <workItem from="1762590847516" duration="160000" />
+      <workItem from="1762593860704" duration="1197000" />
+      <workItem from="1762595121365" duration="1388000" />
+      <workItem from="1762596531369" duration="39000" />
+      <workItem from="1762596632913" duration="17000" />
+      <workItem from="1762596704132" duration="4658000" />
+      <workItem from="1762699526743" duration="744000" />
+      <workItem from="1762968096610" duration="2093000" />
+      <workItem from="1763137688146" duration="5510000" />
+      <workItem from="1763287440318" duration="16962000" />
+      <workItem from="1763573980216" duration="1242000" />
+      <workItem from="1763809832327" duration="12714000" />
+      <workItem from="1764001564295" duration="13952000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/trading_app$UserControllerApiTest.ic" NAME="UserControllerApiTest Coverage Results" MODIFIED="1764177787024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$HomeControllerApiTest.ic" NAME="HomeControllerApiTest Coverage Results" MODIFIED="1764179661928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$ProductServiceImplTest_deleteProduct_ShouldCallRepositoryDelete.ic" NAME="ProductServiceImplTest.deleteProduct_ShouldCallRepositoryDelete Coverage Results" MODIFIED="1763814155704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$OrderServiceImplTest.ic" NAME="OrderServiceImplTest Coverage Results" MODIFIED="1763816944509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$InvoiceMapperTest.ic" NAME="InvoiceMapperTest Coverage Results" MODIFIED="1764006259699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>org.example.invoiceservice.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$OrderServiceIntegrationTest.ic" NAME="OrderServiceIntegrationTest Coverage Results" MODIFIED="1764005355170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$GlobalExceptionHandlerTest.ic" NAME="GlobalExceptionHandlerTest Coverage Results" MODIFIED="1764008786860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.security.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$InvoiceServiceIntegrationTest.ic" NAME="InvoiceServiceIntegrationTest Coverage Results" MODIFIED="1764005725121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>org.example.invoiceservice.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$tradingapp_in_TradingApp.ic" NAME="tradingapp in TradingApp Coverage Results" MODIFIED="1764180062915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/trading_app$InvoiceViewControllerApiTest.ic" NAME="InvoiceViewControllerApiTest Coverage Results" MODIFIED="1764175729757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$web_in_TradingApp.ic" NAME="web in TradingApp Coverage Results" MODIFIED="1764175032668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/trading_app$InvoiceServiceTest.ic" NAME="InvoiceServiceTest Coverage Results" MODIFIED="1764006423215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>org.example.invoiceservice.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$service_in_TradingApp.ic" NAME="service in TradingApp Coverage Results" MODIFIED="1763817059226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/trading_app$OrderControllerApiTest.ic" NAME="OrderControllerApiTest Coverage Results" MODIFIED="1763820539848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$GlobalControllerAdviceTest.ic" NAME="GlobalControllerAdviceTest Coverage Results" MODIFIED="1764178130854" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$CustomerServiceImplTest_and_1_more.ic" NAME="CustomerServiceImplTest and 1 more Coverage Results" MODIFIED="1763814638842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/trading_app$ProductControllerApiTest.ic" NAME="ProductControllerApiTest Coverage Results" MODIFIED="1763820678299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$GlobalExceptionHandlerTest__1_.ic" NAME="GlobalExceptionHandlerTest (1) Coverage Results" MODIFIED="1764008922676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$ProductServiceImplTest_getAllProducts_ShouldReturnAllProducts.ic" NAME="ProductServiceImplTest.getAllProducts_ShouldReturnAllProducts Coverage Results" MODIFIED="1763813919623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$UserControllerApiTest_registerUser_WithExistingUsername_ShouldReturnError.ic" NAME="UserControllerApiTest.registerUser_WithExistingUsername_ShouldReturnError Coverage Results" MODIFIED="1764176723574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$ProductServiceImplTest_findById_WhenProductExists_ShouldReturnProduct.ic" NAME="ProductServiceImplTest.findById_WhenProductExists_ShouldReturnProduct Coverage Results" MODIFIED="1763813988904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$DashboardControllerApiTest_showDashboard_WithoutAuthentication_ShouldReturnUnauthorized.ic" NAME="DashboardControllerApiTest.showDashboard_WithoutAuthentication_ShouldReturnUnauthorized Coverage Results" MODIFIED="1764175980035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$InvoicePdfServiceTest.ic" NAME="InvoicePdfServiceTest Coverage Results" MODIFIED="1764006502693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>org.example.invoiceservice.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$AccountControllerApiTest.ic" NAME="AccountControllerApiTest Coverage Results" MODIFIED="1764175218935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$AdminUserControllerApiTest.ic" NAME="AdminUserControllerApiTest Coverage Results" MODIFIED="1764178645767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$invoiceservice_in_invoice_service.ic" NAME="invoiceservice in invoice-service Coverage Results" MODIFIED="1764174319835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/trading_app$java_in_TradingApp.ic" NAME="java in TradingApp Coverage Results" MODIFIED="1764005412117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/trading_app$DashboardControllerApiTest.ic" NAME="DashboardControllerApiTest Coverage Results" MODIFIED="1764175485132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/trading_app$service_in_invoice_service.ic" NAME="service in invoice-service Coverage Results" MODIFIED="1764006515320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/trading_app$InvoiceControllerTest.ic" NAME="InvoiceControllerTest Coverage Results" MODIFIED="1764007074822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>org.example.invoiceservice.web.*</FILTER>
+    </SUITE>
+  </component>
+</project>

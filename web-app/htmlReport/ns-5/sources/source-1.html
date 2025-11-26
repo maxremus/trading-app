@@ -1,0 +1,190 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > StockCheckJob</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.tradingapp.tradingapp.jobs</a>
+</div>
+
+<h1>Coverage Summary for Class: StockCheckJob (com.tradingapp.tradingapp.jobs)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StockCheckJob</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (3/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    26,7%
+  </span>
+  <span class="absValue">
+    (4/15)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">StockCheckJob$$SpringCGLIB$$0</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (3/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    26,7%
+  </span>
+  <span class="absValue">
+    (4/15)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.tradingapp.tradingapp.jobs;
+&nbsp;
+&nbsp;import com.tradingapp.tradingapp.entities.Product;
+&nbsp;import com.tradingapp.tradingapp.repositories.ProductRepository;
+&nbsp;import org.slf4j.Logger;
+&nbsp;import org.slf4j.LoggerFactory;
+&nbsp;import org.springframework.scheduling.annotation.Scheduled;
+&nbsp;import org.springframework.stereotype.Component;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import org.springframework.cache.annotation.CacheEvict;
+&nbsp;import org.springframework.cache.annotation.CacheConfig;
+&nbsp;
+&nbsp;
+&nbsp;@Component
+&nbsp;@CacheConfig(cacheNames = &quot;products&quot;)
+&nbsp;public class StockCheckJob {
+&nbsp;
+<b class="fc">&nbsp;    private static final Logger log = LoggerFactory.getLogger(StockCheckJob.class);</b>
+&nbsp;
+&nbsp;    private final ProductRepository productRepository;
+&nbsp;
+&nbsp;    @CacheEvict(allEntries = true)
+&nbsp;    @Scheduled(fixedRate = 21600000) // 6 часа = 6 * 60 * 60 * 1000
+&nbsp;    public void clearProductCache() {
+&nbsp;
+<b class="fc">&nbsp;        log.info(&quot;The product cache has been cleared automatically.&quot;);</b>
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    public StockCheckJob(ProductRepository productRepository) {</b>
+&nbsp;
+<b class="fc">&nbsp;        this.productRepository = productRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    //Изпълнява се всеки ден в 8:00 сутринта
+&nbsp;    @Scheduled(cron = &quot;0 0 8 * * *&quot;)
+&nbsp;    public void checkLowStock() {
+&nbsp;
+<b class="nc">&nbsp;        log.info(&quot;Low product availability check is starting...&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;        List&lt;Product&gt; lowStockProducts = productRepository.findAll()</b>
+<b class="nc">&nbsp;                .stream()</b>
+<b class="nc">&nbsp;                .filter(p -&gt; p.getQuantity() &lt;= 5)</b>
+<b class="nc">&nbsp;                .toList();</b>
+&nbsp;
+<b class="nc">&nbsp;        if (lowStockProducts.isEmpty()) {</b>
+<b class="nc">&nbsp;            log.info(&quot;All products are in normal availability.&quot;);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            log.warn(&quot;Low stock products found:&quot;);</b>
+<b class="nc">&nbsp;            lowStockProducts.forEach(p -&gt;</b>
+<b class="nc">&nbsp;                    log.warn(&quot; - {} ({}) – remaining {} No.&quot;, p.getName(), p.getCategory(), p.getQuantity()));</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        log.info(&quot;Low availability check completed.&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-26 18:19</div>
+</div>
+</body>
+</html>

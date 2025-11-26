@@ -1,0 +1,12 @@
+org\example\invoiceservice\InvoiceServiceApplication.class
+org\example\invoiceservice\util\InvoiceMapper.class
+org\example\invoiceservice\web\InvoiceController.class
+org\example\invoiceservice\entity\Invoice$InvoiceBuilder.class
+org\example\invoiceservice\job\invoiceCleanupJob.class
+org\example\invoiceservice\erorrs\GlobalExceptionHandler.class
+org\example\invoiceservice\service\InvoicePdfService.class
+org\example\invoiceservice\dto\InvoiceDTO.class
+org\example\invoiceservice\dto\InvoiceDTO$InvoiceDTOBuilder.class
+org\example\invoiceservice\repository\InvoiceRepository.class
+org\example\invoiceservice\entity\Invoice.class
+org\example\invoiceservice\service\InvoiceService.class

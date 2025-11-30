@@ -18,4 +18,5 @@ public class OrderDTO {
     private String eik;
     private List<OrderItemDTO> items;
     private boolean generateInvoice;
+    private UUID invoiceId;
 }

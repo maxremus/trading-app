@@ -1,25 +1,25 @@
-2025-11-26T18:16:33.184+02:00  INFO 69768 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : Starting InvoiceControllerTest using Java 17.0.10 with PID 69768 (started by Max in C:\Users\Max\Downloads\trading-app\invoice-service)
-2025-11-26T18:16:33.195+02:00  INFO 69768 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : No active profile set, falling back to 1 default profile: "default"
-2025-11-26T18:16:36.130+02:00  INFO 69768 --- [invoice-service] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-11-26T18:16:36.131+02:00  INFO 69768 --- [invoice-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-11-26T18:16:36.134+02:00  INFO 69768 --- [invoice-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
-2025-11-26T18:16:36.221+02:00  INFO 69768 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : Started InvoiceControllerTest in 3.807 seconds (process running for 8.404)
-2025-11-26T18:16:37.768+02:00  INFO 69768 --- [invoice-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.invoiceservice.InvoiceServiceApplicationTests]: InvoiceServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-11-26T18:16:37.788+02:00  INFO 69768 --- [invoice-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.invoiceservice.InvoiceServiceApplication for test class org.example.invoiceservice.InvoiceServiceApplicationTests
-2025-11-26T18:16:37.797+02:00  INFO 69768 --- [invoice-service] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
-2025-11-26T18:16:37.840+02:00  INFO 69768 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : Starting InvoiceServiceApplicationTests using Java 17.0.10 with PID 69768 (started by Max in C:\Users\Max\Downloads\trading-app\invoice-service)
-2025-11-26T18:16:37.841+02:00  INFO 69768 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : No active profile set, falling back to 1 default profile: "default"
-2025-11-26T18:16:38.425+02:00  INFO 69768 --- [invoice-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-26T18:16:38.514+02:00  INFO 69768 --- [invoice-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66 ms. Found 1 JPA repository interface.
-2025-11-26T18:16:38.997+02:00  INFO 69768 --- [invoice-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-26T18:16:39.135+02:00  INFO 69768 --- [invoice-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.2.Final
-2025-11-26T18:16:39.210+02:00  INFO 69768 --- [invoice-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-11-26T18:16:39.474+02:00  INFO 69768 --- [invoice-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-26T18:16:39.530+02:00  INFO 69768 --- [invoice-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-26T18:16:40.112+02:00  INFO 69768 --- [invoice-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:invoicetestdb user=SA
-2025-11-26T18:16:40.116+02:00  INFO 69768 --- [invoice-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-26T18:16:40.173+02:00  WARN 69768 --- [invoice-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-26T18:16:40.223+02:00  INFO 69768 --- [invoice-service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-11-30T13:20:28.885+02:00  INFO 84204 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : Starting InvoiceControllerTest using Java 17.0.10 with PID 84204 (started by Max in C:\Users\Max\Downloads\trading-app\invoice-service)
+2025-11-30T13:20:28.900+02:00  INFO 84204 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : No active profile set, falling back to 1 default profile: "default"
+2025-11-30T13:20:31.999+02:00  INFO 84204 --- [invoice-service] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-11-30T13:20:32.000+02:00  INFO 84204 --- [invoice-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-11-30T13:20:32.003+02:00  INFO 84204 --- [invoice-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2025-11-30T13:20:32.089+02:00  INFO 84204 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : Started InvoiceControllerTest in 4.047 seconds (process running for 8.92)
+2025-11-30T13:20:33.698+02:00  INFO 84204 --- [invoice-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.invoiceservice.InvoiceServiceApplicationTests]: InvoiceServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-11-30T13:20:33.715+02:00  INFO 84204 --- [invoice-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.invoiceservice.InvoiceServiceApplication for test class org.example.invoiceservice.InvoiceServiceApplicationTests
+2025-11-30T13:20:33.725+02:00  INFO 84204 --- [invoice-service] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+2025-11-30T13:20:33.766+02:00  INFO 84204 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : Starting InvoiceServiceApplicationTests using Java 17.0.10 with PID 84204 (started by Max in C:\Users\Max\Downloads\trading-app\invoice-service)
+2025-11-30T13:20:33.767+02:00  INFO 84204 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2025-11-30T13:20:34.285+02:00  INFO 84204 --- [invoice-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-30T13:20:34.362+02:00  INFO 84204 --- [invoice-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 1 JPA repository interface.
+2025-11-30T13:20:34.816+02:00  INFO 84204 --- [invoice-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-30T13:20:34.937+02:00  INFO 84204 --- [invoice-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.2.Final
+2025-11-30T13:20:35.011+02:00  INFO 84204 --- [invoice-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-30T13:20:35.265+02:00  INFO 84204 --- [invoice-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-30T13:20:35.329+02:00  INFO 84204 --- [invoice-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-30T13:20:35.953+02:00  INFO 84204 --- [invoice-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:invoicetestdb user=SA
+2025-11-30T13:20:35.957+02:00  INFO 84204 --- [invoice-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-30T13:20:36.022+02:00  WARN 84204 --- [invoice-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-30T13:20:36.074+02:00  INFO 84204 --- [invoice-service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -27,97 +27,15 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-11-26T18:16:41.711+02:00  INFO 69768 --- [invoice-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-26T18:16:41.778+02:00  INFO 69768 --- [invoice-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-26T18:16:42.449+02:00  WARN 69768 --- [invoice-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-26T18:16:42.791+02:00  INFO 69768 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : Started InvoiceServiceApplicationTests in 4.995 seconds (process running for 14.973)
-2025-11-26T18:16:42.820+02:00  INFO 69768 --- [invoice-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.invoiceservice.InvoiceServiceIntegrationTest]: InvoiceServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-11-26T18:16:42.823+02:00  INFO 69768 --- [invoice-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.invoiceservice.InvoiceServiceApplication for test class org.example.invoiceservice.InvoiceServiceIntegrationTest
-2025-11-26T18:16:43.222+02:00  INFO 69768 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Creating new invoice for customer 'New Customer'
-2025-11-26T18:16:43.238+02:00  INFO 69768 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Fetching all invoices
-2025-11-26T18:16:43.310+02:00  INFO 69768 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Deleting invoice with ID 316c725c-dd75-4b05-98cb-3e94501dc21c
-2025-11-26T18:16:44.013+02:00  INFO 69768 --- [invoice-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-11-26T18:16:44.018+02:00  INFO 69768 --- [invoice-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-11-26T18:16:44.021+02:00  INFO 69768 --- [invoice-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-11-26T18:25:25.961+02:00  INFO 80520 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : Starting InvoiceControllerTest using Java 17.0.10 with PID 80520 (started by Max in C:\Users\Max\Downloads\trading-app\invoice-service)
-2025-11-26T18:25:25.963+02:00  INFO 80520 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : No active profile set, falling back to 1 default profile: "default"
-2025-11-26T18:25:29.039+02:00  INFO 80520 --- [invoice-service] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-11-26T18:25:29.040+02:00  INFO 80520 --- [invoice-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-11-26T18:25:29.043+02:00  INFO 80520 --- [invoice-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
-2025-11-26T18:25:29.131+02:00  INFO 80520 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : Started InvoiceControllerTest in 4.169 seconds (process running for 8.89)
-2025-11-26T18:25:30.617+02:00  INFO 80520 --- [invoice-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.invoiceservice.InvoiceServiceApplicationTests]: InvoiceServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-11-26T18:25:30.650+02:00  INFO 80520 --- [invoice-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.invoiceservice.InvoiceServiceApplication for test class org.example.invoiceservice.InvoiceServiceApplicationTests
-2025-11-26T18:25:30.662+02:00  INFO 80520 --- [invoice-service] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
-2025-11-26T18:25:30.707+02:00  INFO 80520 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : Starting InvoiceServiceApplicationTests using Java 17.0.10 with PID 80520 (started by Max in C:\Users\Max\Downloads\trading-app\invoice-service)
-2025-11-26T18:25:30.708+02:00  INFO 80520 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : No active profile set, falling back to 1 default profile: "default"
-2025-11-26T18:25:31.230+02:00  INFO 80520 --- [invoice-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-26T18:25:31.305+02:00  INFO 80520 --- [invoice-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 1 JPA repository interface.
-2025-11-26T18:25:31.792+02:00  INFO 80520 --- [invoice-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-26T18:25:31.941+02:00  INFO 80520 --- [invoice-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.2.Final
-2025-11-26T18:25:32.029+02:00  INFO 80520 --- [invoice-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-11-26T18:25:32.313+02:00  INFO 80520 --- [invoice-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-26T18:25:32.377+02:00  INFO 80520 --- [invoice-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-26T18:25:32.996+02:00  INFO 80520 --- [invoice-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:invoicetestdb user=SA
-2025-11-26T18:25:33.000+02:00  INFO 80520 --- [invoice-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-26T18:25:33.060+02:00  WARN 80520 --- [invoice-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-26T18:25:33.104+02:00  INFO 80520 --- [invoice-service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 2.3.232
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-11-26T18:25:34.531+02:00  INFO 80520 --- [invoice-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-26T18:25:34.592+02:00  INFO 80520 --- [invoice-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-26T18:25:35.287+02:00  WARN 80520 --- [invoice-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-26T18:25:35.568+02:00  INFO 80520 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : Started InvoiceServiceApplicationTests in 4.906 seconds (process running for 15.328)
-2025-11-26T18:25:35.590+02:00  INFO 80520 --- [invoice-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.invoiceservice.InvoiceServiceIntegrationTest]: InvoiceServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-11-26T18:25:35.592+02:00  INFO 80520 --- [invoice-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.invoiceservice.InvoiceServiceApplication for test class org.example.invoiceservice.InvoiceServiceIntegrationTest
-2025-11-26T18:25:35.949+02:00  INFO 80520 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Creating new invoice for customer 'New Customer'
-2025-11-26T18:25:35.960+02:00  INFO 80520 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Fetching all invoices
-2025-11-26T18:25:36.018+02:00  INFO 80520 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Deleting invoice with ID b4b2d1b3-dc90-42a3-a46c-0e2725f8aa67
-2025-11-26T18:25:36.637+02:00  INFO 80520 --- [invoice-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-11-26T18:25:36.642+02:00  INFO 80520 --- [invoice-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-11-26T18:25:36.644+02:00  INFO 80520 --- [invoice-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-11-26T20:03:10.811+02:00  INFO 40220 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : Starting InvoiceControllerTest using Java 17.0.10 with PID 40220 (started by Max in C:\Users\Max\Downloads\trading-app\invoice-service)
-2025-11-26T20:03:10.814+02:00  INFO 40220 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : No active profile set, falling back to 1 default profile: "default"
-2025-11-26T20:03:13.732+02:00  INFO 40220 --- [invoice-service] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-11-26T20:03:13.733+02:00  INFO 40220 --- [invoice-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-11-26T20:03:13.737+02:00  INFO 40220 --- [invoice-service] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
-2025-11-26T20:03:13.820+02:00  INFO 40220 --- [invoice-service] [main] o.e.i.web.InvoiceControllerTest          : Started InvoiceControllerTest in 3.78 seconds (process running for 8.361)
-2025-11-26T20:03:15.408+02:00  INFO 40220 --- [invoice-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.invoiceservice.InvoiceServiceApplicationTests]: InvoiceServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-11-26T20:03:15.425+02:00  INFO 40220 --- [invoice-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.invoiceservice.InvoiceServiceApplication for test class org.example.invoiceservice.InvoiceServiceApplicationTests
-2025-11-26T20:03:15.434+02:00  INFO 40220 --- [invoice-service] [main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
-2025-11-26T20:03:15.475+02:00  INFO 40220 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : Starting InvoiceServiceApplicationTests using Java 17.0.10 with PID 40220 (started by Max in C:\Users\Max\Downloads\trading-app\invoice-service)
-2025-11-26T20:03:15.475+02:00  INFO 40220 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : No active profile set, falling back to 1 default profile: "default"
-2025-11-26T20:03:16.003+02:00  INFO 40220 --- [invoice-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-11-26T20:03:16.079+02:00  INFO 40220 --- [invoice-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59 ms. Found 1 JPA repository interface.
-2025-11-26T20:03:16.516+02:00  INFO 40220 --- [invoice-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-11-26T20:03:16.633+02:00  INFO 40220 --- [invoice-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.2.Final
-2025-11-26T20:03:16.701+02:00  INFO 40220 --- [invoice-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-11-26T20:03:16.933+02:00  INFO 40220 --- [invoice-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-11-26T20:03:16.990+02:00  INFO 40220 --- [invoice-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-11-26T20:03:17.577+02:00  INFO 40220 --- [invoice-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:invoicetestdb user=SA
-2025-11-26T20:03:17.581+02:00  INFO 40220 --- [invoice-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-11-26T20:03:17.636+02:00  WARN 40220 --- [invoice-service] [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-11-26T20:03:17.677+02:00  INFO 40220 --- [invoice-service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 2.3.232
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2025-11-26T20:03:19.116+02:00  INFO 40220 --- [invoice-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-11-26T20:03:19.182+02:00  INFO 40220 --- [invoice-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-11-26T20:03:19.861+02:00  WARN 40220 --- [invoice-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-11-26T20:03:20.188+02:00  INFO 40220 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : Started InvoiceServiceApplicationTests in 4.755 seconds (process running for 14.729)
-2025-11-26T20:03:20.215+02:00  INFO 40220 --- [invoice-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.invoiceservice.InvoiceServiceIntegrationTest]: InvoiceServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-11-26T20:03:20.217+02:00  INFO 40220 --- [invoice-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.invoiceservice.InvoiceServiceApplication for test class org.example.invoiceservice.InvoiceServiceIntegrationTest
-2025-11-26T20:03:20.593+02:00  INFO 40220 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Creating new invoice for customer 'New Customer'
-2025-11-26T20:03:20.609+02:00  INFO 40220 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Fetching all invoices
-2025-11-26T20:03:20.679+02:00  INFO 40220 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Deleting invoice with ID f84f697b-e3fe-4998-b6e7-81e76037d0a7
-2025-11-26T20:03:21.327+02:00  INFO 40220 --- [invoice-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-11-26T20:03:21.332+02:00  INFO 40220 --- [invoice-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-11-26T20:03:21.334+02:00  INFO 40220 --- [invoice-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-11-30T13:20:37.569+02:00  INFO 84204 --- [invoice-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-30T13:20:37.639+02:00  INFO 84204 --- [invoice-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-30T13:20:38.335+02:00  WARN 84204 --- [invoice-service] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-30T13:20:38.640+02:00  INFO 84204 --- [invoice-service] [main] o.e.i.InvoiceServiceApplicationTests     : Started InvoiceServiceApplicationTests in 4.915 seconds (process running for 15.471)
+2025-11-30T13:20:38.665+02:00  INFO 84204 --- [invoice-service] [main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.invoiceservice.InvoiceServiceIntegrationTest]: InvoiceServiceIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-11-30T13:20:38.668+02:00  INFO 84204 --- [invoice-service] [main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.invoiceservice.InvoiceServiceApplication for test class org.example.invoiceservice.InvoiceServiceIntegrationTest
+2025-11-30T13:20:39.060+02:00  INFO 84204 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Creating new invoice for customer 'New Customer'
+2025-11-30T13:20:39.074+02:00  INFO 84204 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Fetching all invoices
+2025-11-30T13:20:39.142+02:00  INFO 84204 --- [invoice-service] [main] o.e.i.service.InvoiceService             : Deleting invoice with ID 614d0d82-0f06-490f-9c9d-fd47bd223c14
+2025-11-30T13:20:39.852+02:00  INFO 84204 --- [invoice-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-30T13:20:39.857+02:00  INFO 84204 --- [invoice-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-11-30T13:20:39.859+02:00  INFO 84204 --- [invoice-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

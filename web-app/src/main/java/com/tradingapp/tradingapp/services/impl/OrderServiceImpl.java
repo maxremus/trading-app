@@ -154,6 +154,7 @@ public class OrderServiceImpl implements OrderService {
         log.info("Order successfully deleted.");
     }
 
+    @Transactional
     @Override
     public Order updateOrder(UUID id, OrderDTO orderDTO) {
 
@@ -163,32 +164,45 @@ public class OrderServiceImpl implements OrderService {
         Customer customer = customerRepository.findById(orderDTO.getCustomerId())
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
 
+        // ВРЪЩАНЕ НА ПРОДУКТИТЕ В НАЛИЧНОСТ
+        log.info("Returning products to stock for order: {}", id);
         for (OrderItem oldItem : order.getItems()) {
             Product product = oldItem.getProduct();
-            product.setQuantity(product.getQuantity() + oldItem.getQuantity());
+            int returnedQuantity = oldItem.getQuantity();
+            product.setQuantity(product.getQuantity() + returnedQuantity);
             productRepository.save(product);
+            log.info("Returned {} units of product: {}", returnedQuantity, product.getName());
         }
 
+        //  ИЗЧИСТВАНЕ НА СТАРИТЕ ITEMS (без orderItemRepository)
+        // Вместо orderItemRepository.deleteAll(), използваме cascade в Entity
         order.getItems().clear();
 
         BigDecimal total = BigDecimal.ZERO;
+
+        //  ДОБАВЯНЕ НА НОВИТЕ ПРОДУКТИ
+        log.info("Adding new products to order: {}", id);
         for (OrderItemDTO itemDto : orderDTO.getItems()) {
             Product product = productRepository.findById(itemDto.getProductId())
                     .orElseThrow(() -> new RuntimeException("Product not found"));
 
-            if (product.getQuantity() < itemDto.getQuantity()) {
-                throw new IllegalArgumentException("Insufficient availability for product: " + product.getName());
+            int requestedQuantity = itemDto.getQuantity();
+            if (product.getQuantity() < requestedQuantity) {
+                throw new IllegalArgumentException("Insufficient availability for product: " + product.getName() +
+                        ". Available: " + product.getQuantity() + ", Requested: " + requestedQuantity);
             }
 
-            product.setQuantity(product.getQuantity() - itemDto.getQuantity());
+            // НАМАЛЯВАНЕ НА НАЛИЧНОСТТА
+            product.setQuantity(product.getQuantity() - requestedQuantity);
             productRepository.save(product);
+            log.info("Reserved {} units of product: {}", requestedQuantity, product.getName());
 
             OrderItem orderItem = new OrderItem();
             orderItem.setOrder(order);
             orderItem.setProduct(product);
-            orderItem.setQuantity(itemDto.getQuantity());
+            orderItem.setQuantity(requestedQuantity);
             orderItem.setPrice(product.getPrice());
-            orderItem.setTotal(product.getPrice().multiply(BigDecimal.valueOf(itemDto.getQuantity())));
+            orderItem.setTotal(product.getPrice().multiply(BigDecimal.valueOf(requestedQuantity)));
 
             order.getItems().add(orderItem);
             total = total.add(orderItem.getTotal());
@@ -198,7 +212,35 @@ public class OrderServiceImpl implements OrderService {
         order.setTotalPrice(total);
         order.setCreatedOn(LocalDateTime.now());
 
-        return orderRepository.save(order);
+        Order savedOrder = orderRepository.save(order);
+
+        //  Генериране на фактура ако е избрано
+        if (orderDTO.isGenerateInvoice() && savedOrder.getInvoiceId() == null) {
+            try {
+                InvoiceDTO invoiceRequest = InvoiceDTO.builder()
+                        .orderId(savedOrder.getId())
+                        .customerName(savedOrder.getCustomer().getName())
+                        .eik(savedOrder.getCustomer().getEik())
+                        .totalAmount(savedOrder.getTotalPrice())
+                        .build();
+
+                InvoiceDTO invoiceResponse = invoiceClient.createInvoice(invoiceRequest);
+
+                if (invoiceResponse != null && invoiceResponse.getId() != null) {
+                    savedOrder.setInvoiceId(invoiceResponse.getId());
+                    orderRepository.save(savedOrder);
+                    log.info("Invoice created successfully during update: ID={} for order {}",
+                            invoiceResponse.getId(), savedOrder.getId());
+                }
+
+            } catch (Exception ex) {
+                log.error("Error creating invoice during update: {}", ex.getMessage());
+            }
+        }
+
+        log.info("Order {} updated successfully. New total: {}", id, total);
+
+        return savedOrder;
     }
 
     @Override
@@ -222,5 +264,44 @@ public class OrderServiceImpl implements OrderService {
         dto.setItems(items);
 
         return dto;
+    }
+
+    @Override
+    public Order createInvoiceForOrder(UUID orderId) {
+
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        // Проверка дали вече има фактура
+        if (order.getInvoiceId() != null) {
+            log.info("Order {} already has invoice {}", orderId, order.getInvoiceId());
+            return order;
+        }
+
+        try {
+            InvoiceDTO invoiceRequest = InvoiceDTO.builder()
+                    .orderId(order.getId())
+                    .customerName(order.getCustomer().getName())
+                    .eik(order.getCustomer().getEik())
+                    .totalAmount(order.getTotalPrice())
+                    .build();
+
+            InvoiceDTO invoiceResponse = invoiceClient.createInvoice(invoiceRequest);
+
+            if (invoiceResponse != null && invoiceResponse.getId() != null) {
+                order.setInvoiceId(invoiceResponse.getId());
+                Order updatedOrder = orderRepository.save(order);
+                log.info("Invoice created via separate method: ID={} for order {}",
+                        invoiceResponse.getId(), orderId);
+                return updatedOrder;
+            } else {
+                log.warn("invoice-service returned empty response for order {}", orderId);
+                return order;
+            }
+
+        } catch (Exception ex) {
+            log.error("Error creating invoice for order {}: {}", orderId, ex.getMessage());
+            throw new RuntimeException("Failed to create invoice: " + ex.getMessage());
+        }
     }
 }

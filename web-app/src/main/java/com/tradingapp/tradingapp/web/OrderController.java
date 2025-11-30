@@ -95,4 +95,14 @@ public class OrderController {
         orderService.deleteOrder(id);
         return new ModelAndView("redirect:/orders?deleted");
     }
+
+    @PostMapping("/{id}/create-invoice")
+    public ModelAndView createInvoiceForOrder(@PathVariable UUID id) {
+        try {
+            orderService.createInvoiceForOrder(id);
+            return new ModelAndView("redirect:/orders/edit/" + id + "?invoiceCreated");
+        } catch (Exception ex) {
+            return new ModelAndView("redirect:/orders/edit/" + id + "?invoiceError");
+        }
+    }
 }

@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ec7baf6-e317-4063-95a9-f0396144bfa1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/web-app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/config/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/config/DataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-app/src/main/resources/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/main/resources/templates/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-app/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/test/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-app/src/test/resources/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/test/resources/templates/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invoice-service/logs/invoice-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/invoice-service/logs/invoice-service.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/invoice-service.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/invoice-service.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/invoice-service.log.2025-11-19.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/invoice-service.log.2025-11-22.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/services/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/services/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/services/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/services/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/web/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/web/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/web/dto/OrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/main/java/com/tradingapp/tradingapp/web/dto/OrderDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/src/main/resources/templates/edit-order.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/main/resources/templates/edit-order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/src/test/java/com/tradingapp/tradingapp/service/OrderServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/src/test/java/com/tradingapp/tradingapp/service/OrderServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/target/classes/com/tradingapp/tradingapp/services/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/target/classes/com/tradingapp/tradingapp/services/OrderService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/target/classes/com/tradingapp/tradingapp/services/impl/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/target/classes/com/tradingapp/tradingapp/services/impl/OrderServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/target/classes/com/tradingapp/tradingapp/web/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/target/classes/com/tradingapp/tradingapp/web/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/target/classes/com/tradingapp/tradingapp/web/dto/OrderDTO$OrderDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/target/classes/com/tradingapp/tradingapp/web/dto/OrderDTO$OrderDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/target/classes/com/tradingapp/tradingapp/web/dto/OrderDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/target/classes/com/tradingapp/tradingapp/web/dto/OrderDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/target/classes/templates/edit-order.html" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/target/classes/templates/edit-order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-app/target/test-classes/com/tradingapp/tradingapp/service/OrderServiceImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/web-app/target/test-classes/com/tradingapp/tradingapp/service/OrderServiceImplTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,81 +75,81 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JUnit.AccountControllerApiTest.executor": "Coverage",
-    "JUnit.AdminUserControllerApiTest.executor": "Coverage",
-    "JUnit.AdminUserControllerApiTest.listUsers_WithoutAdminRole_ShouldBeForbidden.executor": "Run",
-    "JUnit.CustomerServiceImplTest and 1 more.executor": "Coverage",
-    "JUnit.CustomerServiceImplTest.executor": "Run",
-    "JUnit.CustomerServiceImplTest.getAllCustomers_ShouldReturnAllCustomers.executor": "Run",
-    "JUnit.DashboardControllerApiTest.executor": "Coverage",
-    "JUnit.DashboardControllerApiTest.showDashboard_WithoutAuthentication_ShouldReturnUnauthorized.executor": "Coverage",
-    "JUnit.GlobalControllerAdviceTest.executor": "Coverage",
-    "JUnit.GlobalExceptionHandlerTest (1).executor": "Coverage",
-    "JUnit.GlobalExceptionHandlerTest.executor": "Coverage",
-    "JUnit.HomeControllerApiTest.executor": "Coverage",
-    "JUnit.InvoiceControllerTest.executor": "Coverage",
-    "JUnit.InvoiceMapperTest.executor": "Coverage",
-    "JUnit.InvoicePdfServiceTest.executor": "Coverage",
-    "JUnit.InvoiceServiceIntegrationTest.executor": "Coverage",
-    "JUnit.InvoiceServiceTest.executor": "Coverage",
-    "JUnit.InvoiceViewControllerApiTest.executor": "Coverage",
-    "JUnit.OrderControllerApiTest.executor": "Coverage",
-    "JUnit.OrderControllerApiTest.showEditForm_ShouldReturnEditOrderPage.executor": "Run",
-    "JUnit.OrderServiceImplTest.executor": "Coverage",
-    "JUnit.OrderServiceImplTest.saveOrder_WhenCustomerNotFound_ShouldThrowException.executor": "Run",
-    "JUnit.OrderServiceIntegrationTest.executor": "Coverage",
-    "JUnit.ProductControllerApiTest.addProduct_WithEmptyName_ShouldReturnFormWithErrors.executor": "Run",
-    "JUnit.ProductControllerApiTest.executor": "Coverage",
-    "JUnit.ProductServiceImplTest.deleteProduct_ShouldCallRepositoryDelete.executor": "Coverage",
-    "JUnit.ProductServiceImplTest.executor": "Run",
-    "JUnit.ProductServiceImplTest.findById_WhenProductExists_ShouldReturnProduct.executor": "Coverage",
-    "JUnit.ProductServiceImplTest.findById_WhenProductNotExists_ShouldThrowException.executor": "Run",
-    "JUnit.ProductServiceImplTest.getAllProducts_ShouldReturnAllProducts.executor": "Coverage",
-    "JUnit.ProductServiceImplTest.saveProduct_ShouldSaveAndReturnProduct.executor": "Run",
-    "JUnit.UserControllerApiTest.executor": "Coverage",
-    "JUnit.UserControllerApiTest.registerUser_WithExistingUsername_ShouldReturnError.executor": "Coverage",
-    "JUnit.UserControllerApiTest.showRegisterPage_ShouldBeUnauthorized.executor": "Run",
-    "JUnit.UserControllerApiTest.showRegisterPage_ShouldReturnRegisterPage.executor": "Run",
-    "JUnit.invoiceservice in invoice-service.executor": "Coverage",
-    "JUnit.java in TradingApp.executor": "Coverage",
-    "JUnit.service in TradingApp.executor": "Coverage",
-    "JUnit.service in invoice-service.executor": "Coverage",
-    "JUnit.tradingapp in TradingApp.executor": "Coverage",
-    "JUnit.web in TradingApp.executor": "Coverage",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.InvoiceServiceApplication.executor": "Run",
-    "Spring Boot.TradingAppApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/Max/Downloads/trading-app/src/main/java/com/tradingapp/tradingapp/services",
-    "last_opened_file_path": "C:/Users/Max/Downloads/trading-app/web-app/src/test/resources/templates",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.general",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JUnit.AccountControllerApiTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.AdminUserControllerApiTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.AdminUserControllerApiTest.listUsers_WithoutAdminRole_ShouldBeForbidden.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CustomerServiceImplTest and 1 more.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.CustomerServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CustomerServiceImplTest.getAllCustomers_ShouldReturnAllCustomers.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DashboardControllerApiTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.DashboardControllerApiTest.showDashboard_WithoutAuthentication_ShouldReturnUnauthorized.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.GlobalControllerAdviceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.GlobalExceptionHandlerTest (1).executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.GlobalExceptionHandlerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.HomeControllerApiTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.InvoiceControllerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.InvoiceMapperTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.InvoicePdfServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.InvoiceServiceIntegrationTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.InvoiceServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.InvoiceViewControllerApiTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.OrderControllerApiTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.OrderControllerApiTest.showEditForm_ShouldReturnEditOrderPage.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrderServiceImplTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.OrderServiceImplTest.saveOrder_WhenCustomerNotFound_ShouldThrowException.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrderServiceIntegrationTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ProductControllerApiTest.addProduct_WithEmptyName_ShouldReturnFormWithErrors.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductControllerApiTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ProductServiceImplTest.deleteProduct_ShouldCallRepositoryDelete.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ProductServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceImplTest.findById_WhenProductExists_ShouldReturnProduct.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ProductServiceImplTest.findById_WhenProductNotExists_ShouldThrowException.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductServiceImplTest.getAllProducts_ShouldReturnAllProducts.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ProductServiceImplTest.saveProduct_ShouldSaveAndReturnProduct.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerApiTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserControllerApiTest.registerUser_WithExistingUsername_ShouldReturnError.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserControllerApiTest.showRegisterPage_ShouldBeUnauthorized.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerApiTest.showRegisterPage_ShouldReturnRegisterPage.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.invoiceservice in invoice-service.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.java in TradingApp.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.service in TradingApp.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.service in invoice-service.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.tradingapp in TradingApp.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.web in TradingApp.executor&quot;: &quot;Coverage&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.InvoiceServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TradingAppApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Max/Downloads/trading-app/src/main/java/com/tradingapp/tradingapp/services&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Max/Downloads/trading-app/web-app/src/test/resources/templates&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.tradingapp.tradingapp.services" />
@@ -270,7 +283,8 @@
       <workItem from="1763287440318" duration="16962000" />
       <workItem from="1763573980216" duration="1242000" />
       <workItem from="1763809832327" duration="12714000" />
-      <workItem from="1764001564295" duration="13952000" />
+      <workItem from="1764001564295" duration="14396000" />
+      <workItem from="1764498740564" duration="3037000" />
     </task>
     <servers />
   </component>
@@ -306,7 +320,7 @@
     <SUITE FILE_PATH="coverage/trading_app$InvoiceServiceIntegrationTest.ic" NAME="InvoiceServiceIntegrationTest Coverage Results" MODIFIED="1764005725121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>org.example.invoiceservice.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/trading_app$tradingapp_in_TradingApp.ic" NAME="tradingapp in TradingApp Coverage Results" MODIFIED="1764180062915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/trading_app$tradingapp_in_TradingApp.ic" NAME="tradingapp in TradingApp Coverage Results" MODIFIED="1764501579426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/trading_app$InvoiceViewControllerApiTest.ic" NAME="InvoiceViewControllerApiTest Coverage Results" MODIFIED="1764175729757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
     </SUITE>
@@ -349,8 +363,8 @@
     <SUITE FILE_PATH="coverage/trading_app$AdminUserControllerApiTest.ic" NAME="AdminUserControllerApiTest Coverage Results" MODIFIED="1764178645767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/trading_app$invoiceservice_in_invoice_service.ic" NAME="invoiceservice in invoice-service Coverage Results" MODIFIED="1764174319835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/trading_app$java_in_TradingApp.ic" NAME="java in TradingApp Coverage Results" MODIFIED="1764005412117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/trading_app$invoiceservice_in_invoice_service.ic" NAME="invoiceservice in invoice-service Coverage Results" MODIFIED="1764501622548" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/trading_app$DashboardControllerApiTest.ic" NAME="DashboardControllerApiTest Coverage Results" MODIFIED="1764175485132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.tradingapp.tradingapp.web.*</FILTER>
     </SUITE>

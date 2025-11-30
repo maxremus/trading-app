@@ -532,6 +532,363 @@ class OrderServiceImplTest {
         // When & Then
         assertThrows(IllegalArgumentException.class, () -> orderService.updateOrder(orderId, updatedOrderDTO));
     }
+
+    @Test
+    void createInvoiceForOrder_WhenOrderExistsAndNoInvoice_ShouldCreateInvoice() {
+        // Given
+        UUID orderId = UUID.randomUUID();
+        UUID invoiceId = UUID.randomUUID();
+
+        Order testOrder = Order.builder()
+                .id(orderId)
+                .customer(testCustomer)
+                .totalPrice(new BigDecimal("150.00"))
+                .createdOn(LocalDateTime.now())
+                .invoiceId(null)
+                .build();
+
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(testOrder));
+
+        InvoiceDTO invoiceResponse = InvoiceDTO.builder()
+                .id(invoiceId)
+                .orderId(orderId)
+                .customerName("Test Customer")
+                .eik("123456789")
+                .totalAmount(new BigDecimal("150.00"))
+                .issuedOn(LocalDateTime.now())
+                .build();
+
+        when(invoiceClient.createInvoice(any(InvoiceDTO.class))).thenReturn(invoiceResponse);
+        when(orderRepository.save(any(Order.class))).thenReturn(testOrder);
+
+        // When
+        Order result = orderService.createInvoiceForOrder(orderId);
+
+        // Then
+        assertNotNull(result);
+        assertEquals(invoiceId, result.getInvoiceId());
+        verify(orderRepository, times(1)).findById(orderId);
+        verify(invoiceClient, times(1)).createInvoice(any(InvoiceDTO.class));
+        verify(orderRepository, times(1)).save(testOrder);
+    }
+
+    @Test
+    void createInvoiceForOrder_WhenOrderAlreadyHasInvoice_ShouldReturnOrderWithoutCreating() {
+        // Given
+        UUID orderId = UUID.randomUUID();
+        UUID invoiceId = UUID.randomUUID();
+
+        Order testOrder = Order.builder()
+                .id(orderId)
+                .customer(testCustomer)
+                .totalPrice(new BigDecimal("150.00"))
+                .createdOn(LocalDateTime.now())
+                .invoiceId(invoiceId) // Already has invoice
+                .build();
+
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(testOrder));
+
+        // When
+        Order result = orderService.createInvoiceForOrder(orderId);
+
+        // Then
+        assertNotNull(result);
+        assertEquals(invoiceId, result.getInvoiceId());
+        verify(orderRepository, times(1)).findById(orderId);
+        verify(invoiceClient, never()).createInvoice(any(InvoiceDTO.class));
+        verify(orderRepository, never()).save(any(Order.class));
+    }
+
+    @Test
+    void createInvoiceForOrder_WhenInvoiceServiceReturnsNull_ShouldReturnOriginalOrder() {
+        // Given
+        UUID orderId = UUID.randomUUID();
+
+        Order testOrder = Order.builder()
+                .id(orderId)
+                .customer(testCustomer)
+                .totalPrice(new BigDecimal("150.00"))
+                .createdOn(LocalDateTime.now())
+                .invoiceId(null)
+                .build();
+
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(testOrder));
+        when(invoiceClient.createInvoice(any(InvoiceDTO.class))).thenReturn(null);
+
+        // When
+        Order result = orderService.createInvoiceForOrder(orderId);
+
+        // Then
+        assertNotNull(result);
+        assertNull(result.getInvoiceId()); // Still no invoice
+        verify(orderRepository, times(1)).findById(orderId);
+        verify(invoiceClient, times(1)).createInvoice(any(InvoiceDTO.class));
+        verify(orderRepository, never()).save(any(Order.class));
+    }
+
+    @Test
+    void createInvoiceForOrder_WhenInvoiceServiceReturnsInvoiceWithNullId_ShouldReturnOriginalOrder() {
+        // Given
+        UUID orderId = UUID.randomUUID();
+
+        Order testOrder = Order.builder()
+                .id(orderId)
+                .customer(testCustomer)
+                .totalPrice(new BigDecimal("150.00"))
+                .createdOn(LocalDateTime.now())
+                .invoiceId(null)
+                .build();
+
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(testOrder));
+
+        InvoiceDTO invoiceResponse = InvoiceDTO.builder()
+                .id(null) // ID is null
+                .orderId(orderId)
+                .customerName("Test Customer")
+                .eik("123456789")
+                .totalAmount(new BigDecimal("150.00"))
+                .issuedOn(LocalDateTime.now())
+                .build();
+
+        when(invoiceClient.createInvoice(any(InvoiceDTO.class))).thenReturn(invoiceResponse);
+
+        // When
+        Order result = orderService.createInvoiceForOrder(orderId);
+
+        // Then
+        assertNotNull(result);
+        assertNull(result.getInvoiceId()); // Still no invoice
+        verify(orderRepository, times(1)).findById(orderId);
+        verify(invoiceClient, times(1)).createInvoice(any(InvoiceDTO.class));
+        verify(orderRepository, never()).save(any(Order.class));
+    }
+
+    @Test
+    void createInvoiceForOrder_WhenOrderNotFound_ShouldThrowException() {
+        // Given
+        UUID orderId = UUID.randomUUID();
+        when(orderRepository.findById(orderId)).thenReturn(Optional.empty());
+
+        // When & Then
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> orderService.createInvoiceForOrder(orderId));
+
+        assertEquals("Order not found", exception.getMessage());
+        verify(orderRepository, times(1)).findById(orderId);
+        verify(invoiceClient, never()).createInvoice(any(InvoiceDTO.class));
+        verify(orderRepository, never()).save(any(Order.class));
+    }
+
+    @Test
+    void createInvoiceForOrder_WhenInvoiceServiceThrowsException_ShouldThrowRuntimeException() {
+        // Given
+        UUID orderId = UUID.randomUUID();
+
+        Order testOrder = Order.builder()
+                .id(orderId)
+                .customer(testCustomer)
+                .totalPrice(new BigDecimal("150.00"))
+                .createdOn(LocalDateTime.now())
+                .invoiceId(null)
+                .build();
+
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(testOrder));
+        when(invoiceClient.createInvoice(any(InvoiceDTO.class)))
+                .thenThrow(new RuntimeException("Invoice service unavailable"));
+
+        // When & Then
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> orderService.createInvoiceForOrder(orderId));
+
+        assertTrue(exception.getMessage().contains("Failed to create invoice"));
+        assertTrue(exception.getMessage().contains("Invoice service unavailable"));
+        verify(orderRepository, times(1)).findById(orderId);
+        verify(invoiceClient, times(1)).createInvoice(any(InvoiceDTO.class));
+        verify(orderRepository, never()).save(any(Order.class));
+    }
+
+    @Test
+    void createInvoiceForOrder_WhenInvoiceCreatedSuccessfully_ShouldSetInvoiceIdAndSave() {
+        // Given
+        UUID orderId = UUID.randomUUID();
+        UUID invoiceId = UUID.randomUUID();
+
+        Order testOrder = Order.builder()
+                .id(orderId)
+                .customer(testCustomer)
+                .totalPrice(new BigDecimal("150.00"))
+                .createdOn(LocalDateTime.now())
+                .invoiceId(null)
+                .build();
+
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(testOrder));
+
+        InvoiceDTO invoiceResponse = InvoiceDTO.builder()
+                .id(invoiceId)
+                .orderId(orderId)
+                .customerName("Test Customer")
+                .eik("123456789")
+                .totalAmount(new BigDecimal("150.00"))
+                .issuedOn(LocalDateTime.now())
+                .build();
+
+        when(invoiceClient.createInvoice(any(InvoiceDTO.class))).thenReturn(invoiceResponse);
+
+        Order savedOrder = Order.builder()
+                .id(orderId)
+                .customer(testCustomer)
+                .totalPrice(new BigDecimal("150.00"))
+                .invoiceId(invoiceId) // Invoice is set
+                .build();
+
+        when(orderRepository.save(any(Order.class))).thenReturn(savedOrder);
+
+        // When
+        Order result = orderService.createInvoiceForOrder(orderId);
+
+        // Then
+        assertNotNull(result);
+        assertEquals(invoiceId, result.getInvoiceId());
+        verify(orderRepository, times(1)).save(any(Order.class));
+
+        // Verify the invoice request was built correctly
+        verify(invoiceClient).createInvoice(argThat(invoiceRequest ->
+                invoiceRequest.getOrderId().equals(orderId) &&
+                        invoiceRequest.getCustomerName().equals("Test Customer") &&
+                        invoiceRequest.getEik().equals("123456789") &&
+                        invoiceRequest.getTotalAmount().equals(new BigDecimal("150.00"))
+        ));
+    }
+
+    @Test
+    void createInvoiceForOrder_WithDifferentCustomerData_ShouldUseCorrectData() {
+        // Given
+        UUID orderId = UUID.randomUUID();
+        UUID invoiceId = UUID.randomUUID();
+
+        Customer customerWithDifferentData = Customer.builder()
+                .id(UUID.randomUUID())
+                .name("Different Customer")
+                .eik("987654321")
+                .email("different@example.com")
+                .build();
+
+        Order orderWithDifferentCustomer = Order.builder()
+                .id(orderId)
+                .customer(customerWithDifferentData)
+                .totalPrice(new BigDecimal("200.00"))
+                .createdOn(LocalDateTime.now())
+                .invoiceId(null)
+                .build();
+
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(orderWithDifferentCustomer));
+
+        InvoiceDTO invoiceResponse = InvoiceDTO.builder()
+                .id(invoiceId)
+                .orderId(orderId)
+                .customerName("Different Customer")
+                .eik("987654321")
+                .totalAmount(new BigDecimal("200.00"))
+                .issuedOn(LocalDateTime.now())
+                .build();
+
+        when(invoiceClient.createInvoice(any(InvoiceDTO.class))).thenReturn(invoiceResponse);
+        when(orderRepository.save(any(Order.class))).thenReturn(orderWithDifferentCustomer);
+
+        // When
+        Order result = orderService.createInvoiceForOrder(orderId);
+
+        // Then
+        assertNotNull(result);
+        verify(invoiceClient).createInvoice(argThat(invoiceRequest ->
+                invoiceRequest.getCustomerName().equals("Different Customer") &&
+                        invoiceRequest.getEik().equals("987654321") &&
+                        invoiceRequest.getTotalAmount().equals(new BigDecimal("200.00"))
+        ));
+    }
+
+    @Test
+    void updateOrder_WithGenerateInvoiceTrueAndNoExistingInvoice_ShouldCreateInvoice() {
+        // Given
+        UUID orderId = UUID.randomUUID();
+        UUID invoiceId = UUID.randomUUID();
+
+        // Existing order without invoice
+        Order existingOrder = Order.builder()
+                .id(orderId)
+                .customer(testCustomer)
+                .createdBy(testUser)
+                .totalPrice(new BigDecimal("100.00"))
+                .items(new java.util.ArrayList<>())
+                .invoiceId(null) // No existing invoice
+                .build();
+
+        OrderItem existingItem = OrderItem.builder()
+                .id(UUID.randomUUID())
+                .order(existingOrder)
+                .product(testProduct)
+                .quantity(2)
+                .price(new BigDecimal("25.50"))
+                .total(new BigDecimal("51.00"))
+                .build();
+
+        existingOrder.getItems().add(existingItem);
+
+        // Updated order DTO with generateInvoice = true
+        OrderItemDTO updatedItemDTO = OrderItemDTO.builder()
+                .productId(productId)
+                .quantity(5)
+                .build();
+
+        OrderDTO updatedOrderDTO = OrderDTO.builder()
+                .customerId(customerId)
+                .items(List.of(updatedItemDTO))
+                .generateInvoice(true) //  Generate invoice is TRUE
+                .build();
+
+        when(orderRepository.findById(orderId)).thenReturn(Optional.of(existingOrder));
+        when(customerRepository.findById(customerId)).thenReturn(Optional.of(testCustomer));
+        when(productRepository.findById(productId)).thenReturn(Optional.of(testProduct));
+        when(productRepository.save(any(Product.class))).thenReturn(testProduct);
+
+        Order savedOrder = Order.builder()
+                .id(orderId)
+                .customer(testCustomer)
+                .totalPrice(new BigDecimal("127.50"))
+                .invoiceId(null) // Still no invoice before generation
+                .build();
+
+        when(orderRepository.save(any(Order.class))).thenReturn(savedOrder);
+
+        // Mock invoice response
+        InvoiceDTO invoiceResponse = InvoiceDTO.builder()
+                .id(invoiceId)
+                .orderId(orderId)
+                .customerName("Test Customer")
+                .eik("123456789")
+                .totalAmount(new BigDecimal("127.50"))
+                .issuedOn(LocalDateTime.now())
+                .build();
+
+        when(invoiceClient.createInvoice(any(InvoiceDTO.class))).thenReturn(invoiceResponse);
+
+        // When
+        Order result = orderService.updateOrder(orderId, updatedOrderDTO);
+
+        // Then
+        assertNotNull(result);
+
+        // Verify invoice was created
+        verify(invoiceClient, times(1)).createInvoice(argThat(invoiceRequest ->
+                invoiceRequest.getOrderId().equals(orderId) &&
+                        invoiceRequest.getCustomerName().equals("Test Customer") &&
+                        invoiceRequest.getEik().equals("123456789") &&
+                        invoiceRequest.getTotalAmount().equals(new BigDecimal("127.50"))
+        ));
+
+        // Verify order was saved with invoice ID
+        verify(orderRepository, times(2)).save(any(Order.class)); // Once for order update, once for invoice
+    }
 }
 
 

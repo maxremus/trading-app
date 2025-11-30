@@ -20,4 +20,6 @@ public interface OrderService {
     Order updateOrder(UUID id, OrderDTO orderDTO);
 
     OrderDTO getOrderAsDto(UUID id);
+
+    Order createInvoiceForOrder(UUID orderId);
 }
